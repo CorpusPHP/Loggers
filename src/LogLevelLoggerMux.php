@@ -26,10 +26,10 @@ class LogLevelLoggerMux implements LoggerInterface {
 
 	/**
 	 * @param \Psr\Log\LoggerInterface|null $defaultLogger The default logger to use for levels where no other logger
-	 *     is specified. If null, a Psr\Log\NullLogger will be used.
+	 *                                                     is specified. If null, a Psr\Log\NullLogger will be used.
 	 */
 	public function __construct(
-		LoggerInterface $defaultLogger = null,
+		?LoggerInterface $defaultLogger = null,
 
 		?LoggerInterface $emergencyLogger = null,
 		?LoggerInterface $alertLogger = null,
@@ -41,7 +41,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 		?LoggerInterface $debugLogger = null
 	) {
 		if( !$defaultLogger ) {
-			$defaultLogger = new NullLogger();
+			$defaultLogger = new NullLogger;
 		}
 
 		$this->defaultLogger = $defaultLogger;
@@ -56,6 +56,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		$this->debugLogger     = $debugLogger ?? $defaultLogger;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Emergency log level.
+	 */
 	public function withEmergencyLogger( LoggerInterface $logger ) : self {
 		$clone                  = clone $this;
 		$clone->emergencyLogger = $logger;
@@ -63,6 +66,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Alert log level.
+	 */
 	public function withAlertLogger( LoggerInterface $logger ) : self {
 		$clone              = clone $this;
 		$clone->alertLogger = $logger;
@@ -70,6 +76,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Critical log level.
+	 */
 	public function withCriticalLogger( LoggerInterface $logger ) : self {
 		$clone                 = clone $this;
 		$clone->criticalLogger = $logger;
@@ -77,6 +86,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Error log level.
+	 */
 	public function withErrorLogger( LoggerInterface $logger ) : self {
 		$clone              = clone $this;
 		$clone->errorLogger = $logger;
@@ -84,6 +96,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Warning log level.
+	 */
 	public function withWarningLogger( LoggerInterface $logger ) : self {
 		$clone                = clone $this;
 		$clone->warningLogger = $logger;
@@ -91,6 +106,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Notice log level.
+	 */
 	public function withNoticeLogger( LoggerInterface $logger ) : self {
 		$clone               = clone $this;
 		$clone->noticeLogger = $logger;
@@ -98,6 +116,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Info log level.
+	 */
 	public function withInfoLogger( LoggerInterface $logger ) : self {
 		$clone             = clone $this;
 		$clone->infoLogger = $logger;
@@ -105,6 +126,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * Returns a new instance with the specified logger handling the Debug log level.
+	 */
 	public function withDebugLogger( LoggerInterface $logger ) : self {
 		$clone              = clone $this;
 		$clone->debugLogger = $logger;
@@ -116,30 +140,39 @@ class LogLevelLoggerMux implements LoggerInterface {
 		switch( true ) {
 			case $level === LogLevel::EMERGENCY:
 				$this->emergencyLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::ALERT:
 				$this->alertLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::CRITICAL:
 				$this->criticalLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::ERROR:
 				$this->errorLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::WARNING:
 				$this->warningLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::NOTICE:
 				$this->noticeLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::INFO:
 				$this->infoLogger->log($level, $message, $context);
-				break;
+
+				return;
 			case $level === LogLevel::DEBUG:
 				$this->debugLogger->log($level, $message, $context);
-				break;
+
+				return;
 		}
 
 		$this->defaultLogger->log($level, $message, $context);
 	}
+
 }
