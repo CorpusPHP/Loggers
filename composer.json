@@ -1,0 +1,31 @@
+{
+    "name": "corpus/loggers",
+    "description": "Helpful PSR-3 Utility Loggers",
+    "type": "library",
+    "keywords": [
+        "psr-3",
+        "logger",
+        "log",
+        "logging"
+    ],
+    "require": {
+        "psr/log": "*",
+        "php": "^7.4 || ^8.0"
+    },
+    "require-dev": {
+        "donatj/drop": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Corpus\\Loggers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jesse Donat",
+            "email": "donatj@gmail.com"
+        }
+    ]
+}
