@@ -1,11 +1,11 @@
 <mddoc>
 	<docpage target="README.md" autoloader="psr4" autoloader-root="src"
-			 autoloader-root-namespace="Corpus\Logging">
+			 autoloader-root-namespace="Corpus\Loggers">
 
 		<section title="HTTP Message Utils">
 			<badge-poser type="version"/>
 			<badge-poser type="license"/>
-			<badge-github-action name="CorpusPHP/Logging" workflow="CI"/>
+			<badge-github-action name="CorpusPHP/Loggers" workflow-file="ci.yml"/>
 			<text>Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).</text>
 
 			<section title="Requirements">

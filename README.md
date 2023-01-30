@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/corpus/loggers/version)](https://packagist.org/packages/corpus/loggers)
 [![License](https://poser.pugx.org/corpus/loggers/license)](https://packagist.org/packages/corpus/loggers)
-[![CI](https://github.com/CorpusPHP/Logging/workflows/CI/badge.svg?)](https://github.com/CorpusPHP/Logging/actions?query=workflow%3ACI)
+[![ci.yml](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml/badge.svg?)](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml)
 
 
 Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).
