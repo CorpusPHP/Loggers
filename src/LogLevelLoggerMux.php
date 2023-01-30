@@ -136,6 +136,9 @@ class LogLevelLoggerMux implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * @inheritDoc See LoggerInterface::log()
+	 */
 	public function log( $level, $message, array $context = [] ) {
 		switch( true ) {
 			case $level === LogLevel::EMERGENCY:

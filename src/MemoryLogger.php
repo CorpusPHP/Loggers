@@ -20,6 +20,9 @@ class MemoryLogger implements LoggerInterface {
 
 	private array $logs = [];
 
+	/**
+	 * @inheritDoc See LoggerInterface::log()
+	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		$this->logs[] = self::makeLogRecord($level, $message, $context);
 	}

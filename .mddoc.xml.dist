@@ -1,0 +1,23 @@
+<mddoc>
+	<docpage target="README.md" autoloader="psr4" autoloader-root="src"
+			 autoloader-root-namespace="Corpus\Logging">
+
+		<section title="HTTP Message Utils">
+			<badge-poser type="version"/>
+			<badge-poser type="license"/>
+			<badge-github-action name="CorpusPHP/Logging" workflow="CI"/>
+			<text>Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).</text>
+
+			<section title="Requirements">
+				<composer-requires/>
+			</section>
+			<section title="Installing">
+				<composer-install/>
+			</section>
+
+			<section title="Documentation">
+				<recursiveDirectory name="src" />
+			</section>
+		</section>
+	</docpage>
+</mddoc>

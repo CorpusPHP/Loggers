@@ -15,6 +15,9 @@ class MultiLogger implements LoggerInterface {
 	/** @param LoggerInterface[] $loggers */
 	private array $loggers;
 
+	/**
+	 * Create a new MultiLogger instance with the given loggers to delegate to.
+	 */
 	public function __construct( LoggerInterface ...$loggers ) {
 		$this->loggers = $loggers;
 	}
@@ -30,6 +33,9 @@ class MultiLogger implements LoggerInterface {
 		return $clone;
 	}
 
+	/**
+	 * @inheritDoc See LoggerInterface::log()
+	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		foreach( $this->loggers as $logger ) {
 			$logger->log($level, $message, $context);
