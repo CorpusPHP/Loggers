@@ -8,7 +8,7 @@ use Psr\Log\LoggerTrait;
 /**
  * MemoryLogger is a logger that stores all logs in local memory.
  *
- * This is useful for testing purposes.
+ * This is primarily useful for testing purposes.
  */
 class MemoryLogger implements LoggerInterface {
 
@@ -24,10 +24,24 @@ class MemoryLogger implements LoggerInterface {
 		$this->logs[] = self::makeLogRecord($level, $message, $context);
 	}
 
+	/**
+	 * getLogs returns all logs that have been logged to this logger.
+	 *
+	 * The returned array is a list of log records, each of which is an array keyed by:
+	 *
+	 * - MemoryLogger::KEY_LEVEL : The log level
+	 * - MemoryLogger::KEY_MESSAGE : The log message
+	 * - MemoryLogger::KEY_CONTEXT : The log context
+	 *
+	 * @return array[]
+	 */
 	public function getLogs() : array {
 		return $this->logs;
 	}
 
+	/**
+	 * clearLogs clears all logs that have been logged to this logger.
+	 */
 	public function clearLogs() : void {
 		$this->logs = [];
 	}
