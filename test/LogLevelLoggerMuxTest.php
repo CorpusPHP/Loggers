@@ -4,6 +4,7 @@ namespace Corpus\Loggers;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LogLevel;
+use Psr\Log\NullLogger;
 
 class LogLevelLoggerMuxTest extends TestCase {
 
@@ -127,6 +128,17 @@ class LogLevelLoggerMuxTest extends TestCase {
 
 		$this->assertSame($hitLog, $memoryLoggerHit->getLogs());
 		$this->assertSame($missLog, $memoryLoggerMiss->getLogs());
+	}
+
+	public function test_LogLevelLoggerMux_invalidLogLevel() : void {
+		$catchAll   = new MemoryLogger;
+		$nullLogger = new NullLogger;
+		$logger     = new LogLevelLoggerMux(
+			$catchAll, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger
+		);
+
+		$logger->log('invalid', 'test');
+		$this->assertSame([ MemoryLogger::makeLogRecord('invalid', 'test') ], $catchAll->getLogs());
 	}
 
 	public function levelTestProvider() : \Generator {
