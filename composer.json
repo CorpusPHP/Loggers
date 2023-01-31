@@ -28,7 +28,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Corpus\\Loggers\\Tests\\": "tests/"
+            "Corpus\\Loggers\\": "tests/"
         }
     },
     "authors": [
