@@ -22,6 +22,61 @@ composer require 'corpus/loggers'
 
 ## Documentation
 
+### Class: \Corpus\Loggers\LoggerVerbosityFilter
+
+LoggerVerbosityFilter mutes log messages based on a given verbosity level.
+
+By default,
+
+- level 0 logs no messages.
+- level 1 logs emergency, alert, critical, and error messages.
+- level 2 logs emergency, alert, critical, error, warning, and notice messages.
+- level 3 logs emergency, alert, critical, error, warning, notice, and info messages.
+- level 4 or greater logs emergency, alert, critical, error, warning, notice, info, and debug messages.
+
+The levels can be changed by passing a callback redefine the verbosity level for each log level.
+
+The verbosity level can be changed by calling withVerbosity()
+
+#### Method: LoggerVerbosityFilter->__construct
+
+```php
+function __construct(\Psr\Log\LoggerInterface $logger [, int $verbosity = 0 [, ?callable $verbosityFromLevelCallback = null]])
+```
+
+##### Parameters:
+
+- ***callable*** | ***null*** `$verbosityFromLevelCallback` - A callback that takes a Psr\Log\LogLevel log level string and
+returns an integer verbosity level. If null, the default callback will be used.
+
+---
+
+#### Method: LoggerVerbosityFilter->withVerbosity
+
+```php
+function withVerbosity(int $verbosity) : self
+```
+
+Returns a new instance with the specified verbosity level.
+
+---
+
+#### Method: LoggerVerbosityFilter->withVerbosityFromLevelCallback
+
+```php
+function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback) : self
+```
+
+Returns a new instance with the specified verbosity level callback.
+
+---
+
+#### Method: LoggerVerbosityFilter->log
+
+```php
+function log($level, $message [, array $context = []])
+```
+
 ### Class: \Corpus\Loggers\LogLevelLoggerMux
 
 LogLevelLoggerMux multiplexes logs to different loggers based on the log level.
