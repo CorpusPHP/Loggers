@@ -8,17 +8,6 @@ use Psr\Log\NullLogger;
 
 class LogLevelLoggerMuxTest extends TestCase {
 
-	private const ALL_LEVELS = [
-		LogLevel::EMERGENCY,
-		LogLevel::ALERT,
-		LogLevel::CRITICAL,
-		LogLevel::ERROR,
-		LogLevel::WARNING,
-		LogLevel::NOTICE,
-		LogLevel::INFO,
-		LogLevel::DEBUG,
-	];
-
 	/**
 	 * @dataProvider levelTestProvider
 	 */
@@ -38,7 +27,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 
 		$i   = 0;
 		$log = [];
-		foreach( self::ALL_LEVELS as $level ) {
+		foreach( LogLevels::ALL_LEVELS as $level ) {
 			$i++;
 			$logger->log($level, 'test ' . $i, [ 'level' => $level ]);
 			$log[] = MemoryLogger::makeLogRecord($level, 'test ' . $i, [ 'level' => $level ]);
@@ -89,7 +78,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 
 		$i   = 0;
 		$log = [];
-		foreach( self::ALL_LEVELS as $level ) {
+		foreach( LogLevels::ALL_LEVELS as $level ) {
 			$i++;
 			$logger->log($level, 'test ' . $i, [ 'level' => $level ]);
 			if( in_array($level, $levels, true) ) {
@@ -116,7 +105,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 
 		$hitLog  = [];
 		$missLog = [];
-		foreach( self::ALL_LEVELS as $level ) {
+		foreach( LogLevels::ALL_LEVELS as $level ) {
 			$i++;
 			$logger->log($level, 'test ' . $i, [ 'level' => $level ]);
 			if( in_array($level, $levels, true) ) {
@@ -142,7 +131,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 	}
 
 	public function levelTestProvider() : \Generator {
-		foreach( self::arrayPowerSet(self::ALL_LEVELS) as $combination ) {
+		foreach( self::arrayPowerSet(LogLevels::ALL_LEVELS) as $combination ) {
 			yield [ $combination ];
 		}
 	}
