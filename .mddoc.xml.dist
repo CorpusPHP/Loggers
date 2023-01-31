@@ -2,7 +2,7 @@
 	<docpage target="README.md" autoloader="psr4" autoloader-root="src"
 			 autoloader-root-namespace="Corpus\Loggers">
 
-		<section title="HTTP Message Utils">
+		<section title="(PSR-3) Loggers and Logging Utilities">
 			<badge-poser type="version"/>
 			<badge-poser type="license"/>
 			<badge-github-action name="CorpusPHP/Loggers" workflow-file="ci.yml"/>

@@ -1,4 +1,4 @@
-# HTTP Message Utils
+# (PSR-3) Loggers and Logging Utilities
 
 [![Latest Stable Version](https://poser.pugx.org/corpus/loggers/version)](https://packagist.org/packages/corpus/loggers)
 [![License](https://poser.pugx.org/corpus/loggers/license)](https://packagist.org/packages/corpus/loggers)
