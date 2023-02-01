@@ -7,7 +7,7 @@ use Psr\Log\LoggerTrait;
 use Psr\Log\LogLevel;
 
 /**
- * LoggerVerbosityFilter mutes log messages based on a given verbosity level.
+ * LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.
  *
  * By default,
  *
@@ -69,7 +69,8 @@ class LoggerVerbosityFilter implements LoggerInterface {
 	 * @inheritDoc See LoggerInterface::log()
 	 */
 	public function log( $level, $message, array $context = [] ) {
-		if( $this->verbosity >= $this->getVerbosityFromLevel($level) ) {
+		if( $this->verbosity >= ($this->verbosityFromLevelCallback)($level) ) {
+
 			$this->logger->log($level, $message, $context);
 		}
 	}
