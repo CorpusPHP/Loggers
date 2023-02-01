@@ -22,9 +22,13 @@ composer require 'corpus/loggers'
 
 ## Documentation
 
+### Class: \Corpus\Loggers\Exceptions\LoggerArgumentException
+
+### Class: \Corpus\Loggers\Exceptions\LoggerInitException
+
 ### Class: \Corpus\Loggers\LoggerVerbosityFilter
 
-LoggerVerbosityFilter mutes log messages based on a given verbosity level.
+LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.
 
 By default,
 
@@ -274,4 +278,32 @@ added to the list of loggers to delegate to.
 
 ```php
 function log($level, $message [, array $context = []]) : void
+```
+
+### Class: \Corpus\Loggers\StreamResourceLogger
+
+StreamResourceLogger is a logger that writes to a stream resource.
+
+This is particularly useful for writing to STDERR or STDOUT, or to a file.
+
+#### Method: StreamResourceLogger->__construct
+
+```php
+function __construct($resource)
+```
+
+##### Parameters:
+
+- ***resource*** `$resource` - Writable stream resource
+
+**Throws**: `\Corpus\Loggers\Exceptions\LoggerArgumentException` - If the given resource is not a stream
+
+**Throws**: `\Corpus\Loggers\Exceptions\LoggerInitException` - If the given resource is not writable
+
+---
+
+#### Method: StreamResourceLogger->log
+
+```php
+function log($level, $message [, array $context = []])
 ```
