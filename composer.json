@@ -18,7 +18,7 @@
         "donatj/mddoc": "^0.5.0",
         "squizlabs/php_codesniffer": "^3.7",
         "corpus/coding-standard": "^0.7.0",
-        "friendsofphp/php-cs-fixer": "^3.14",
+        "friendsofphp/php-cs-fixer": "^3.16",
         "rawr/cross-data-providers": "^2.3"
     },
     "license": "MIT",
