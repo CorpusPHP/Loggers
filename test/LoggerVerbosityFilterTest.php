@@ -4,7 +4,7 @@ namespace Corpus\Loggers;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LogLevel;
-use TRegx\DataProvider\DataProviders;
+use TRegx\PhpUnit\DataProviders\DataProvider;
 
 class LoggerVerbosityFilterTest extends TestCase {
 
@@ -31,8 +31,8 @@ class LoggerVerbosityFilterTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	public function standardVerbosityLevel_logLevelSetMode_provider() : array {
-		return DataProviders::cross(
+	public function standardVerbosityLevel_logLevelSetMode_provider() : iterable {
+		return DataProvider::cross(
 			$this->standardVerbosityLevelProvider(),
 			$this->binaryChoiceProvider()
 		);
