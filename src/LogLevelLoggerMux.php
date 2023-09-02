@@ -139,7 +139,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * @inheritDoc See LoggerInterface::log()
 	 */
-	public function log( $level, $message, array $context = [] ) {
+	public function log( $level, $message, array $context = [] ) : void {
 		switch( true ) {
 			case $level === LogLevel::EMERGENCY:
 				$this->emergencyLogger->log($level, $message, $context);

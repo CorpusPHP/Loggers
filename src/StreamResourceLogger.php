@@ -43,7 +43,7 @@ class StreamResourceLogger implements LoggerInterface {
 	/**
 	 * @inheritDoc See LoggerInterface::log()
 	 */
-	public function log( $level, $message, array $context = [] ) {
+	public function log( $level, $message, array $context = [] ) : void {
 		fprintf(
 			$this->stream,
 			"%s %9s: %s\n",

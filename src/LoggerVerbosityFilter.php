@@ -68,7 +68,7 @@ class LoggerVerbosityFilter implements LoggerInterface {
 	/**
 	 * @inheritDoc See LoggerInterface::log()
 	 */
-	public function log( $level, $message, array $context = [] ) {
+	public function log( $level, $message, array $context = [] ) : void {
 		if( $this->verbosity >= ($this->verbosityFromLevelCallback)($level) ) {
 
 			$this->logger->log($level, $message, $context);
