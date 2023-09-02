@@ -2,6 +2,7 @@
     "name": "corpus/loggers",
     "description": "Helpful PSR-3 Utility Loggers",
     "type": "library",
+    "license": "MIT",
     "keywords": [
         "psr-3",
         "logger",
@@ -21,7 +22,6 @@
         "friendsofphp/php-cs-fixer": "^3.25",
         "rawr/cross-data-providers": "^3.0"
     },
-    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Corpus\\Loggers\\": "src/"
@@ -38,6 +38,9 @@
             "email": "donatj@gmail.com"
         }
     ],
+    "provide": {
+        "psr/log-implementation": "1.0|2.0|3.0"
+    },
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
