@@ -9,7 +9,7 @@ Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/
 
 ## Requirements
 
-- **psr/log**: ^1
+- **psr/log**: ^1 || ^2 || ^3
 - **php**: ^7.4 || ^8.0
 
 ## Installing
@@ -78,7 +78,7 @@ Returns a new instance with the specified verbosity level callback.
 #### Method: LoggerVerbosityFilter->log
 
 ```php
-function log($level, $message [, array $context = []])
+function log($level, $message [, array $context = []]) : void
 ```
 
 ### Class: \Corpus\Loggers\LogLevelLoggerMux
@@ -181,7 +181,7 @@ Returns a new instance with the specified logger handling the Debug log level.
 #### Method: LogLevelLoggerMux->log
 
 ```php
-function log($level, $message [, array $context = []])
+function log($level, $message [, array $context = []]) : void
 ```
 
 ### Class: \Corpus\Loggers\MemoryLogger
@@ -305,5 +305,5 @@ function __construct($resource)
 #### Method: StreamResourceLogger->log
 
 ```php
-function log($level, $message [, array $context = []])
+function log($level, $message [, array $context = []]) : void
 ```
