@@ -16,7 +16,7 @@
 			</section>
 
 			<section title="Documentation">
-				<recursiveDirectory name="src" />
+				<recursive-directory name="src" />
 			</section>
 		</section>
 	</docpage>
