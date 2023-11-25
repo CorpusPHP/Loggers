@@ -6,7 +6,8 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * LoggerWithContext is a logger that adds a given context to all log messages.
+ * LoggerWithContext is a logger that adds a given context to all log messages
+ * before delegating to another logger.
  *
  * This is useful for adding context to all log messages, such as the current
  * request ID, IP address or the current user ID.
@@ -18,6 +19,14 @@ class LoggerWithContext implements LoggerInterface {
 	private array $context;
 	private LoggerInterface $logger;
 
+	/**
+	 * Create a new LoggerWithContext instance with the given logger and context.
+	 *
+	 * The given context will be added to all log messages.
+	 *
+	 * @param LoggerInterface $logger  The logger to delegate to.
+	 * @param array           $context The context to add to all log messages.
+	 */
 	public function __construct( LoggerInterface $logger, array $context = [] ) {
 		$this->logger  = $logger;
 		$this->context = $context;
@@ -31,7 +40,7 @@ class LoggerWithContext implements LoggerInterface {
 	}
 
 	/**
-	 * withContext returns a new instance with the given context
+	 * Returns a new instance with the given context
 	 * replacing the existing context.
 	 */
 	public function withContext( array $context ) : self {
@@ -42,7 +51,7 @@ class LoggerWithContext implements LoggerInterface {
 	}
 
 	/**
-	 * withAddedContext returns a new instance with the given context
+	 * Returns a new instance with the given context
 	 * added to the existing context.
 	 */
 	public function withAddedContext( array $context ) : self {

@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class LoggerWithContextTest extends TestCase {
 
-	public function test_LoggerWithContext() {
+	public function test_LoggerWithContext() : void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LoggerWithContext($memoryLogger, [ 'foo' => 'bar' ]);
 
@@ -24,7 +24,7 @@ class LoggerWithContextTest extends TestCase {
 		], $memoryLogger->getLogs());
 	}
 
-	public function test_LoggerWithContext_overwrite() {
+	public function test_LoggerWithContext_overwrite() : void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LoggerWithContext($memoryLogger, [ 'foo' => 'bar', 'bar' => 'baz' ]);
 
@@ -43,7 +43,7 @@ class LoggerWithContextTest extends TestCase {
 		], $memoryLogger->getLogs());
 	}
 
-	public function test_withContext() {
+	public function test_withContext() : void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LoggerWithContext($memoryLogger, [ 'foo' => 'bar' ]);
 
@@ -63,7 +63,7 @@ class LoggerWithContextTest extends TestCase {
 		], $memoryLogger->getLogs());
 	}
 
-	public function test_withAddedContext() {
+	public function test_withAddedContext() : void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LoggerWithContext($memoryLogger, [ 'foo' => 'bar' ]);
 
