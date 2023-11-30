@@ -97,10 +97,6 @@ array (
 
 ## Documentation
 
-### Class: \Corpus\Loggers\Exceptions\LoggerArgumentException
-
-### Class: \Corpus\Loggers\Exceptions\LoggerInitException
-
 ### Class: \Corpus\Loggers\LoggerVerbosityFilter
 
 LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.
