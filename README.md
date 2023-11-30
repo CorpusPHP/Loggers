@@ -81,6 +81,41 @@ Returns a new instance with the specified verbosity level callback.
 function log($level, $message [, array $context = []]) : void
 ```
 
+### Class: \Corpus\Loggers\LogLevelFilter
+
+LogLevelFilter is a logger that filters log messages based on the log level.
+
+It can be used to filter out log messages that are not needed for a specific
+use case.
+
+For example, you may want to log all messages at the DEBUG level to a file,
+but only log messages at the ERROR level or higher to the console.
+
+This logger can be used to filter out the DEBUG messages from the console
+logger.
+
+This logger accepts a list of log levels to filter, and a boolean indicating
+whether to exclude or include the given log levels.
+
+#### Method: LogLevelFilter->__construct
+
+```php
+function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $exclude = false])
+```
+
+##### Parameters:
+
+- ***string[]*** `$levels` - The log levels to filter.
+- ***bool*** `$exclude` - Whether to exclude the given levels, or include them.
+
+---
+
+#### Method: LogLevelFilter->log
+
+```php
+function log($level, $message [, array $context = []]) : void
+```
+
 ### Class: \Corpus\Loggers\LogLevelLoggerMux
 
 LogLevelLoggerMux multiplexes logs to different loggers based on the log level.
