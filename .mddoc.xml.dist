@@ -1,6 +1,7 @@
 <mddoc>
-	<docpage target="README.md" autoloader="psr4" autoloader-root="src"
-			 autoloader-root-namespace="Corpus\Loggers">
+	<docpage target="README.md">
+
+		<autoloader type="psr4" root="src" namespace="Corpus\Loggers"/>
 
 		<section title="(PSR-3) Loggers and Logging Utilities">
 			<badge-poser type="version"/>
@@ -13,6 +14,12 @@
 			</section>
 			<section title="Installing">
 				<composer-install/>
+			</section>
+
+			<section title="Example">
+				<text>This example demonstrates how the loggers may be chained together to create complex interactions</text>
+				<source name="example/nested.php" lang="php" />
+				<exec cmd="php example/nested.php" format="code-block"/>
 			</section>
 
 			<section title="Documentation">

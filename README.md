@@ -20,6 +20,81 @@ Install the latest version with:
 composer require 'corpus/loggers'
 ```
 
+## Example
+
+This example demonstrates how the loggers may be chained together to create complex interactions
+
+```php
+<?php
+
+use Corpus\Loggers\LoggerWithContext;
+use Corpus\Loggers\LogLevelFilter;
+use Corpus\Loggers\MemoryLogger;
+use Corpus\Loggers\MultiLogger;
+use Corpus\Loggers\StreamResourceLogger;
+use Psr\Log\LogLevel;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$memoryLogger = new MemoryLogger;
+$cliLogger    = new StreamResourceLogger(
+	fopen('php://output', 'w')
+);
+
+$logger = new MultiLogger(
+	new LogLevelFilter(
+		(new LoggerWithContext($memoryLogger))->withContext([ 'Logger' => 'Number 1' ]),
+		[ Psr\Log\LogLevel::INFO ]
+	),
+	new LogLevelFilter(
+		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 2' ]),
+		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ]
+	),
+	new LogLevelFilter(
+		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 3' ]),
+		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ],
+		true // reverse filter - only log levels NOT in the array
+	)
+);
+
+$logger->info('Hello World', [ 'hello' => 'world' ]);
+$logger->debug('How are you?', [ 'foo' => 'bar' ]);
+$logger->error('I am fine', [ 'bar' => 'baz', 'baz' => 'qux' ]);
+
+echo "\n--- dumping memory logger ---\n\n";
+
+var_export($memoryLogger->getLogs());
+
+```
+
+```
+2023-11-30T05:34:35+00:00      info: Hello World
+    Logger: 'Number 2'
+     hello: 'world'
+2023-11-30T05:34:35+00:00     debug: How are you?
+    Logger: 'Number 2'
+       foo: 'bar'
+2023-11-30T05:34:35+00:00     error: I am fine
+    Logger: 'Number 3'
+       bar: 'baz'
+       baz: 'qux'
+
+--- dumping memory logger ---
+
+array (
+  0 =>
+  array (
+    'level' => 'info',
+    'message' => 'Hello World',
+    'context' =>
+    array (
+      'Logger' => 'Number 1',
+      'hello' => 'world',
+    ),
+  ),
+)
+```
+
 ## Documentation
 
 ### Class: \Corpus\Loggers\Exceptions\LoggerArgumentException

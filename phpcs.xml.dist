@@ -3,6 +3,7 @@
 
 	<file>src</file>
 	<file>test</file>
+	<file>example</file>
 
 	<rule ref="Corpus"/>
 
