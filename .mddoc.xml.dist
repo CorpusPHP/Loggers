@@ -18,12 +18,14 @@
 
 			<section title="Example">
 				<text>This example demonstrates how the loggers may be chained together to create complex interactions</text>
-				<source name="example/nested.php" lang="php" />
-				<exec cmd="php example/nested.php" format="code-block"/>
+				<source name="example/nested.php" lang="php"/>
+				<replace regex="true" search="%\d\d\d\d\-\d\d\-\d\dT\d\d:\d\d:\d\d\+\d\d:\d\d%" replace="2023-11-30T05:34:35+00:00">
+					<exec cmd="php example/nested.php" format="code-block"/>
+				</replace>
 			</section>
 
 			<section title="Documentation">
-				<recursive-directory name="src" />
+				<recursive-directory name="src"/>
 			</section>
 		</section>
 	</docpage>
