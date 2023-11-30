@@ -65,7 +65,7 @@ class StreamResourceLogger implements LoggerInterface {
 				$out .= $line . "\n";
 			}
 
-			fprintf($this->stream, "%{$max}s: %s\n", $key, $out);
+			fprintf($this->stream, "%{$max}s: %s", $key, $out);
 		}
 	}
 
