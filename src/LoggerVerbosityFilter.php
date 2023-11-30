@@ -27,7 +27,7 @@ class LoggerVerbosityFilter implements LoggerInterface {
 
 	private LoggerInterface $logger;
 	private int $verbosity;
-	/** @var callable|null */
+	/** @var callable */
 	private $verbosityFromLevelCallback;
 
 	/**

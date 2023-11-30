@@ -81,6 +81,59 @@ Returns a new instance with the specified verbosity level callback.
 function log($level, $message [, array $context = []]) : void
 ```
 
+### Class: \Corpus\Loggers\LoggerWithContext
+
+LoggerWithContext is a logger that adds a given context to all log messages
+before delegating to another logger.
+
+This is useful for adding context to all log messages, such as the current
+request ID, IP address or the current user ID.
+
+#### Method: LoggerWithContext->__construct
+
+```php
+function __construct(\Psr\Log\LoggerInterface $logger [, array $context = []])
+```
+
+Create a new LoggerWithContext instance with the given logger and context.  
+  
+The given context will be added to all log messages.
+
+##### Parameters:
+
+- ***\Psr\Log\LoggerInterface*** `$logger` - The logger to delegate to.
+- ***array*** `$context` - The context to add to all log messages.
+
+---
+
+#### Method: LoggerWithContext->log
+
+```php
+function log($level, $message [, array $context = []]) : void
+```
+
+---
+
+#### Method: LoggerWithContext->withContext
+
+```php
+function withContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+replacing the existing context.
+
+---
+
+#### Method: LoggerWithContext->withAddedContext
+
+```php
+function withAddedContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+added to the existing context.
+
 ### Class: \Corpus\Loggers\LogLevelFilter
 
 LogLevelFilter is a logger that filters log messages based on the log level.
