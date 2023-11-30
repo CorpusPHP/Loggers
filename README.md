@@ -148,14 +148,6 @@ function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback) : 
 
 Returns a new instance with the specified verbosity level callback.
 
----
-
-#### Method: LoggerVerbosityFilter->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```
-
 ### Class: \Corpus\Loggers\LoggerWithContext
 
 LoggerWithContext is a logger that adds a given context to all log messages
@@ -178,14 +170,6 @@ The given context will be added to all log messages.
 
 - ***\Psr\Log\LoggerInterface*** `$logger` - The logger to delegate to.
 - ***array*** `$context` - The context to add to all log messages.
-
----
-
-#### Method: LoggerWithContext->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```
 
 ---
 
@@ -235,14 +219,6 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 
 - ***string[]*** `$levels` - The log levels to filter.
 - ***bool*** `$exclude` - Whether to exclude the given levels, or include them.
-
----
-
-#### Method: LogLevelFilter->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```
 
 ### Class: \Corpus\Loggers\LogLevelLoggerMux
 
@@ -339,14 +315,6 @@ function withDebugLogger(\Psr\Log\LoggerInterface $logger) : self
 
 Returns a new instance with the specified logger handling the Debug log level.
 
----
-
-#### Method: LogLevelLoggerMux->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```
-
 ### Class: \Corpus\Loggers\MemoryLogger
 
 MemoryLogger is a logger that stores all logs in local memory.
@@ -362,12 +330,6 @@ class MemoryLogger {
 	public const KEY_MESSAGE = 'message';
 	public const KEY_CONTEXT = 'context';
 }
-```
-
-#### Method: MemoryLogger->log
-
-```php
-function log($level, $message [, array $context = []]) : void
 ```
 
 ---
@@ -435,14 +397,6 @@ function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
 withAdditionalLoggers returns a new instance with the given loggers  
 added to the list of loggers to delegate to.
 
----
-
-#### Method: MultiLogger->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```
-
 ### Class: \Corpus\Loggers\StreamResourceLogger
 
 StreamResourceLogger is a logger that writes to a stream resource.
@@ -462,11 +416,3 @@ function __construct($resource)
 **Throws**: `\Corpus\Loggers\Exceptions\LoggerArgumentException` - If the given resource is not a stream
 
 **Throws**: `\Corpus\Loggers\Exceptions\LoggerInitException` - If the given resource is not writable
-
----
-
-#### Method: StreamResourceLogger->log
-
-```php
-function log($level, $message [, array $context = []]) : void
-```

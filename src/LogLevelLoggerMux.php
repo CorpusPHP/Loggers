@@ -138,6 +138,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		switch( true ) {

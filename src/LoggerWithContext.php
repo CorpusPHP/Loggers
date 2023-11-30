@@ -34,6 +34,7 @@ class LoggerWithContext implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		$this->logger->log($level, $message, array_merge($this->context, $context));
