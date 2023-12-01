@@ -19,7 +19,7 @@
         "donatj/mddoc": "^0.10.0",
         "squizlabs/php_codesniffer": "^3.7",
         "corpus/coding-standard": "^0.8.0",
-        "friendsofphp/php-cs-fixer": "^3.37",
+        "friendsofphp/php-cs-fixer": "^3.40",
         "rawr/phpunit-data-provider": "^3.3"
     },
     "autoload": {
