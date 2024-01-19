@@ -8,7 +8,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * StreamResourceLogger is a logger that writes to a stream resource.
+ * StreamResourceLogger is a PSR Logger that writes to a stream resource.
  *
  * This is particularly useful for writing to STDERR or STDOUT, or to a file.
  */

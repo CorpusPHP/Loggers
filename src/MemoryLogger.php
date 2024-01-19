@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * MemoryLogger is a logger that stores all logs in local memory.
+ * MemoryLogger is a PSR Logger that stores all logs in local memory.
  *
  * This is primarily useful for testing purposes.
  */

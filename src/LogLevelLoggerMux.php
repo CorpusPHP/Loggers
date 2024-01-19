@@ -8,7 +8,8 @@ use Psr\Log\LogLevel;
 use Psr\Log\NullLogger;
 
 /**
- * LogLevelLoggerMux multiplexes logs to different loggers based on the log level.
+ * LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers
+ * based on the log level.
  */
 class LogLevelLoggerMux implements LoggerInterface {
 

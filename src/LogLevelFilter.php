@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * LogLevelFilter is a logger that filters log messages based on the log level.
+ * LogLevelFilter is a PSR Logger that filters logs based on the log level.
  * It can be used to filter out log messages that are not needed for a specific
  * use case.
  *

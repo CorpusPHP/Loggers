@@ -9,6 +9,8 @@
 			<badge-github-action name="CorpusPHP/Loggers" workflow-file="ci.yml"/>
 			<text>Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).</text>
 
+			<exec cmd="bin/logger-docs.php"/>
+
 			<section title="Requirements">
 				<composer-requires/>
 			</section>

@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * MultiLogger is a logger that delegates to multiple other loggers.
+ * MultiLogger is a PSR Logger that delegates logs to multiple other loggers.
  */
 class MultiLogger implements MultiLoggerInterface {
 

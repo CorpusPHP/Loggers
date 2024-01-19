@@ -7,6 +7,14 @@
 
 Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).
 
+- **LogLevelFilter** - LogLevelFilter is a PSR Logger that filters logs based on the log level. It can be used to filter out log messages that are not needed for a specific use case.  
+- **LogLevelLoggerMux** - LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers based on the log level.  
+- **LoggerVerbosityFilter** - LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.  
+- **LoggerWithContext** - LoggerWithContext is a logger that adds a given context to all log messages before delegating to another logger.  
+- **MemoryLogger** - MemoryLogger is a PSR Logger that stores all logs in local memory.  
+- **MultiLogger** - MultiLogger is a PSR Logger that delegates logs to multiple other loggers.  
+- **StreamResourceLogger** - StreamResourceLogger is a PSR Logger that writes to a stream resource.
+
 ## Requirements
 
 - **psr/log**: ^1 || ^2 || ^3
@@ -257,7 +265,7 @@ added to the existing context.
 
 ### Class: \Corpus\Loggers\LogLevelFilter
 
-LogLevelFilter is a logger that filters log messages based on the log level.
+LogLevelFilter is a PSR Logger that filters logs based on the log level.
 
 It can be used to filter out log messages that are not needed for a specific
 use case.
@@ -284,7 +292,8 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 
 ### Class: \Corpus\Loggers\LogLevelLoggerMux
 
-LogLevelLoggerMux multiplexes logs to different loggers based on the log level.
+LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers
+based on the log level.
 
 #### Method: LogLevelLoggerMux->__construct
 
@@ -379,7 +388,7 @@ Returns a new instance with the specified logger handling the Debug log level.
 
 ### Class: \Corpus\Loggers\MemoryLogger
 
-MemoryLogger is a logger that stores all logs in local memory.
+MemoryLogger is a PSR Logger that stores all logs in local memory.
 
 This is primarily useful for testing purposes.
 
@@ -426,7 +435,7 @@ clearLogs clears all logs that have been logged to this logger.
 
 ### Class: \Corpus\Loggers\MultiLogger
 
-MultiLogger is a logger that delegates to multiple other loggers.
+MultiLogger is a PSR Logger that delegates logs to multiple other loggers.
 
 #### Method: MultiLogger->__construct
 
@@ -449,7 +458,7 @@ added to the list of loggers to delegate to.
 
 ### Class: \Corpus\Loggers\StreamResourceLogger
 
-StreamResourceLogger is a logger that writes to a stream resource.
+StreamResourceLogger is a PSR Logger that writes to a stream resource.
 
 This is particularly useful for writing to STDERR or STDOUT, or to a file.
 
