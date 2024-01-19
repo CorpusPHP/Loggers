@@ -424,18 +424,6 @@ function clearLogs() : void
 
 clearLogs clears all logs that have been logged to this logger.
 
----
-
-#### Method: MemoryLogger::makeLogRecord
-
-```php
-function makeLogRecord($level, $message [, array $context = []]) : array
-```
-
-makeLogRecord is a helper function to create a log record.  
-  
-It is exposed publicly so that it may be used in tests.
-
 ### Class: \Corpus\Loggers\MultiLogger
 
 MultiLogger is a logger that delegates to multiple other loggers.

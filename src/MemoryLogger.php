@@ -54,6 +54,11 @@ class MemoryLogger implements LoggerInterface {
 	 * makeLogRecord is a helper function to create a log record.
 	 *
 	 * It is exposed publicly so that it may be used in tests.
+	 *
+	 * @param mixed   $level   The log level
+	 * @param string  $message The log message
+	 * @param mixed[] $context The log context
+	 * @mddoc-ignore
 	 */
 	public static function makeLogRecord( $level, $message, array $context = [] ) : array {
 		return [
