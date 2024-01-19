@@ -2,13 +2,14 @@
 
 namespace Corpus\Loggers;
 
+use Corpus\Loggers\Interfaces\MultiLoggerInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * MultiLogger is a logger that delegates to multiple other loggers.
+ * MultiLogger is a PSR Logger that delegates logs to multiple other loggers.
  */
-class MultiLogger implements LoggerInterface {
+class MultiLogger implements MultiLoggerInterface {
 
 	use LoggerTrait;
 
@@ -22,10 +23,6 @@ class MultiLogger implements LoggerInterface {
 		$this->loggers = $loggers;
 	}
 
-	/**
-	 * withAdditionalLoggers returns a new instance with the given loggers
-	 * added to the list of loggers to delegate to.
-	 */
 	public function withAdditionalLoggers( LoggerInterface ...$loggers ) : self {
 		$clone = clone $this;
 		$clone->loggers = array_merge($clone->loggers, $loggers);
@@ -35,6 +32,7 @@ class MultiLogger implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		foreach( $this->loggers as $logger ) {

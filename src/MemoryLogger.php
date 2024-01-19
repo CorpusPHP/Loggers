@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * MemoryLogger is a logger that stores all logs in local memory.
+ * MemoryLogger is a PSR Logger that stores all logs in local memory.
  *
  * This is primarily useful for testing purposes.
  */
@@ -22,6 +22,7 @@ class MemoryLogger implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		$this->logs[] = self::makeLogRecord($level, $message, $context);
@@ -53,8 +54,13 @@ class MemoryLogger implements LoggerInterface {
 	 * makeLogRecord is a helper function to create a log record.
 	 *
 	 * It is exposed publicly so that it may be used in tests.
+	 *
+	 * @param mixed   $level   The log level
+	 * @param string  $message The log message
+	 * @param mixed[] $context The log context
+	 * @mddoc-ignore
 	 */
-	public static function makeLogRecord($level, $message, array $context = []) : array {
+	public static function makeLogRecord( $level, $message, array $context = [] ) : array {
 		return [
 			self::KEY_LEVEL   => $level,
 			self::KEY_MESSAGE => $message,

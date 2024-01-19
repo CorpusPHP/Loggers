@@ -8,7 +8,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
 /**
- * StreamResourceLogger is a logger that writes to a stream resource.
+ * StreamResourceLogger is a PSR Logger that writes to a stream resource.
  *
  * This is particularly useful for writing to STDERR or STDOUT, or to a file.
  */
@@ -42,6 +42,7 @@ class StreamResourceLogger implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
 		fprintf(
@@ -65,7 +66,7 @@ class StreamResourceLogger implements LoggerInterface {
 				$out .= $line . "\n";
 			}
 
-			fprintf($this->stream, "%{$max}s: %s\n", $key, $out);
+			fprintf($this->stream, "%{$max}s: %s", $key, $out);
 		}
 	}
 

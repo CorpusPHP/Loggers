@@ -3,6 +3,9 @@
 
 	<file>src</file>
 	<file>test</file>
+	<file>bin</file>
+	<file>example</file>
+
 
 	<rule ref="Corpus"/>
 

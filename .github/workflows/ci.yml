@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ ubuntu-latest ]
-        php-versions: [ '7.4', '8.0', '8.1', '8.2' ]
+        php-versions: [ '7.4', '8.0', '8.1', '8.2', '8.3' ]
         psr-log-versions: [ '^1', '^2', '^3' ]
         exclude:
           - php-versions: '7.4'
@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2

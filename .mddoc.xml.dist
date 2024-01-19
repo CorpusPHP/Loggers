@@ -1,12 +1,15 @@
 <mddoc>
-	<docpage target="README.md" autoloader="psr4" autoloader-root="src"
-			 autoloader-root-namespace="Corpus\Loggers">
+	<docpage target="README.md">
+
+		<autoloader type="psr4" root="src" namespace="Corpus\Loggers"/>
 
 		<section title="(PSR-3) Loggers and Logging Utilities">
 			<badge-poser type="version"/>
 			<badge-poser type="license"/>
 			<badge-github-action name="CorpusPHP/Loggers" workflow-file="ci.yml"/>
 			<text>Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).</text>
+
+			<exec cmd="bin/logger-docs.php"/>
 
 			<section title="Requirements">
 				<composer-requires/>
@@ -15,8 +18,16 @@
 				<composer-install/>
 			</section>
 
+			<section title="Example">
+				<text>This example demonstrates how the loggers may be chained together to create complex interactions</text>
+				<source name="example/nested.php" lang="php"/>
+				<replace regex="true" search="%\d\d\d\d\-\d\d\-\d\dT\d\d:\d\d:\d\d\+\d\d:\d\d%" replace="2023-11-30T05:34:35+00:00">
+					<exec cmd="php example/nested.php" format="code-block"/>
+				</replace>
+			</section>
+
 			<section title="Documentation">
-				<recursive-directory name="src" />
+				<recursive-directory name="src"/>
 			</section>
 		</section>
 	</docpage>
