@@ -19,11 +19,8 @@ foreach( $loggers as $logger ) {
 		continue;
 	}
 
-
-
 	$ref = new ReflectionClass($logger);
 	$doc = (string)$ref->getDocComment();
-
 
 	echo "- **{$ref->getShortName()}**";
 
