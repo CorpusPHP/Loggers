@@ -2,7 +2,7 @@
 
 [![Latest Stable Version](https://poser.pugx.org/corpus/loggers/version)](https://packagist.org/packages/corpus/loggers)
 [![License](https://poser.pugx.org/corpus/loggers/license)](https://packagist.org/packages/corpus/loggers)
-[![ci.yml](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml/badge.svg?)](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml)
+[![ci.yml](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml/badge.svg)](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml)
 
 
 Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).
@@ -96,6 +96,72 @@ array (
 ```
 
 ## Documentation
+
+### Class: \Corpus\Loggers\Interfaces\LoggerWithContextInterface
+
+#### Method: LoggerWithContextInterface->withContext
+
+```php
+function withContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+replacing the existing context.
+
+---
+
+#### Method: LoggerWithContextInterface->withAddedContext
+
+```php
+function withAddedContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+added to the existing context.
+
+### Class: \Corpus\Loggers\Interfaces\MultiLoggerInterface
+
+#### Method: MultiLoggerInterface->withAdditionalLoggers
+
+```php
+function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
+```
+
+withAdditionalLoggers returns a new instance with the given loggers  
+added to the list of loggers to delegate to.
+
+### Class: \Corpus\Loggers\Interfaces\WithAdditionalLoggersInterface
+
+#### Method: WithAdditionalLoggersInterface->withAdditionalLoggers
+
+```php
+function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
+```
+
+withAdditionalLoggers returns a new instance with the given loggers  
+added to the list of loggers to delegate to.
+
+### Class: \Corpus\Loggers\Interfaces\WithContextInterface
+
+#### Method: WithContextInterface->withContext
+
+```php
+function withContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+replacing the existing context.
+
+---
+
+#### Method: WithContextInterface->withAddedContext
+
+```php
+function withAddedContext(array $context) : self
+```
+
+Returns a new instance with the given context  
+added to the existing context.
 
 ### Class: \Corpus\Loggers\LoggerVerbosityFilter
 

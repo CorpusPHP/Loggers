@@ -55,7 +55,7 @@ class MemoryLogger implements LoggerInterface {
 	 *
 	 * It is exposed publicly so that it may be used in tests.
 	 */
-	public static function makeLogRecord($level, $message, array $context = []) : array {
+	public static function makeLogRecord( $level, $message, array $context = [] ) : array {
 		return [
 			self::KEY_LEVEL   => $level,
 			self::KEY_MESSAGE => $message,
