@@ -13,7 +13,7 @@ class MultiLogger implements MultiLoggerInterface {
 
 	use LoggerTrait;
 
-	/** @param LoggerInterface[] $loggers */
+	/** @var LoggerInterface[] $loggers */
 	private array $loggers;
 
 	/**
