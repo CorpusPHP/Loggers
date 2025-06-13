@@ -21,7 +21,8 @@
         "corpus/coding-standard": "^0.8.0",
         "friendsofphp/php-cs-fixer": "^3.65",
         "rawr/phpunit-data-provider": "^3.3",
-        "corpus/recursive-require": "^1.2"
+        "corpus/recursive-require": "^1.2",
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {
