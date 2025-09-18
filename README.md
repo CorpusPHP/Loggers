@@ -116,6 +116,10 @@ function withContext(array $context) : self
 Returns a new instance with the given context  
 replacing the existing context.
 
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
 ---
 
 #### Method: LoggerWithContextInterface->withAddedContext
@@ -126,6 +130,10 @@ function withAddedContext(array $context) : self
 
 Returns a new instance with the given context  
 added to the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ### Class: Corpus\Loggers\Interfaces\MultiLoggerInterface
 
@@ -160,6 +168,10 @@ function withContext(array $context) : self
 Returns a new instance with the given context  
 replacing the existing context.
 
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
 ---
 
 #### Method: WithContextInterface->withAddedContext
@@ -170,6 +182,10 @@ function withAddedContext(array $context) : self
 
 Returns a new instance with the given context  
 added to the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ### Class: Corpus\Loggers\LoggerVerbosityFilter
 
@@ -240,6 +256,7 @@ The given context will be added to all log messages.
 
 - ***\Psr\Log\LoggerInterface*** `$logger` - The logger to delegate to.
 - ***array*** `$context` - The context to add to all log messages.
+- ***array*** `$context`
 
 ---
 
@@ -252,6 +269,10 @@ function withContext(array $context) : self
 Returns a new instance with the given context  
 replacing the existing context.
 
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
 ---
 
 #### Method: LoggerWithContext->withAddedContext
@@ -262,6 +283,10 @@ function withAddedContext(array $context) : self
 
 Returns a new instance with the given context  
 added to the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ### Class: Corpus\Loggers\LogLevelFilter
 
