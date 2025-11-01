@@ -19,7 +19,7 @@
         "donatj/mddoc": "^0.10.1",
         "squizlabs/php_codesniffer": "^4.0",
         "corpus/coding-standard": "^0.10.0",
-        "friendsofphp/php-cs-fixer": "^3.89",
+        "friendsofphp/php-cs-fixer": "=3.89.1",
         "rawr/phpunit-data-provider": "^3.3",
         "corpus/recursive-require": "^1.2"
     },
