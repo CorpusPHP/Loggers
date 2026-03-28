@@ -17,6 +17,7 @@ class LoggerWithContext implements LoggerWithContextInterface {
 
 	use LoggerTrait;
 
+	/** @var mixed[] */
 	private array $context;
 	private LoggerInterface $logger;
 
@@ -27,6 +28,7 @@ class LoggerWithContext implements LoggerWithContextInterface {
 	 *
 	 * @param LoggerInterface $logger  The logger to delegate to.
 	 * @param array           $context The context to add to all log messages.
+	 * @param mixed[]         $context
 	 */
 	public function __construct( LoggerInterface $logger, array $context = [] ) {
 		$this->logger  = $logger;
