@@ -16,7 +16,7 @@ interface WrappedLoggerInterface {
 	 *
 	 * This method allows access to the immediate underlying logger, which may
 	 * itself be a wrapper around another logger. If you want to access the
-	 * innermost logger, you can use the unwrapLogger() method
+	 * innermost logger, you can use the unwrapAll() method
 	 */
 	public function unwrap() : LoggerInterface;
 

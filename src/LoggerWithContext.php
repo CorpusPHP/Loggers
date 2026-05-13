@@ -4,7 +4,7 @@ namespace Corpus\Loggers;
 
 use Corpus\Loggers\Interfaces\LoggerWithContextInterface;
 use Corpus\Loggers\Interfaces\WrappedLoggerInterface;
-use Corpus\Loggers\Traits\UnwrapLoggerTrait;
+use Corpus\Loggers\Traits\UnwrapTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
@@ -18,7 +18,7 @@ use Psr\Log\LoggerTrait;
 class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInterface {
 
 	use LoggerTrait;
-	use UnwrapLoggerTrait;
+	use UnwrapTrait;
 
 	private array $context;
 	private LoggerInterface $logger;

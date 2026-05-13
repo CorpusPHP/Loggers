@@ -3,7 +3,7 @@
 namespace Corpus\Loggers;
 
 use Corpus\Loggers\Interfaces\WrappedLoggerInterface;
-use Corpus\Loggers\Traits\UnwrapLoggerTrait;
+use Corpus\Loggers\Traits\UnwrapTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 use Psr\Log\LogLevel;
@@ -26,7 +26,7 @@ use Psr\Log\LogLevel;
 class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 
 	use LoggerTrait;
-	use UnwrapLoggerTrait;
+	use UnwrapTrait;
 
 	private LoggerInterface $logger;
 	private int $verbosity;
