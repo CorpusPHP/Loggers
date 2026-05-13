@@ -7,12 +7,16 @@ use PHPUnit\Framework\TestCase;
 class LoggerUnwrapTest extends TestCase {
 
 	public function test_unwrapLogger() : void {
-		$loggerMemory          = new MemoryLogger;
-		$loggerVerbosityFilter = new LoggerVerbosityFilter($loggerMemory, 1);
-		$loggerWithContext     = new LoggerWithContext($loggerVerbosityFilter, [ 'request_id' => 123 ]);
+		$loggerMemory      = new MemoryLogger;
+		$loggerWithContext = new LoggerWithContext(
+			new LoggerWithContext(
+			new LoggerVerbosityFilter(
+				new LogLevelFilter($loggerMemory, ['foo' => 'bar']),
+				1), [
+					'request_id' => 123,
+				]), []);
 
-		$this->assertSame($loggerVerbosityFilter, $loggerWithContext->unwrapLogger(false));
-		$this->assertSame($loggerMemory, $loggerWithContext->unwrapLogger(true));
+		$this->assertSame($loggerMemory, $loggerWithContext->unwrapLogger());
 	}
 
 }

@@ -3,7 +3,7 @@
 namespace Corpus\Loggers;
 
 use Corpus\Loggers\Interfaces\LoggerWithContextInterface;
-use Corpus\Loggers\Interfaces\UnwrappableLoggerInterface;
+use Corpus\Loggers\Interfaces\WrappedLoggerInterface;
 use Corpus\Loggers\Traits\UnwrapLoggerTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
@@ -15,12 +15,13 @@ use Psr\Log\LoggerTrait;
  * This is useful for adding context to all log messages, such as the current
  * request ID, IP address or the current user ID.
  */
-class LoggerWithContext implements LoggerWithContextInterface, UnwrappableLoggerInterface {
+class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInterface {
 
 	use LoggerTrait;
 	use UnwrapLoggerTrait;
 
 	private array $context;
+	private LoggerInterface $logger;
 
 	/**
 	 * Create a new LoggerWithContext instance with the given logger and context.
@@ -55,6 +56,10 @@ class LoggerWithContext implements LoggerWithContextInterface, UnwrappableLogger
 		$clone->context = array_merge($clone->context, $context);
 
 		return $clone;
+	}
+
+	public function getWrappedLogger() : LoggerInterface {
+		return $this->logger;
 	}
 
 }

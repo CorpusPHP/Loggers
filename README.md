@@ -138,25 +138,6 @@ function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
 withAdditionalLoggers returns a new instance with the given loggers  
 added to the list of loggers to delegate to.
 
-### Class: Corpus\Loggers\Interfaces\UnwrappableLoggerInterface
-
-UnwrappableLoggerInterface is an interface for loggers that can be unwrapped
-to access the underlying logger.
-
-#### Method: UnwrappableLoggerInterface->unwrapLogger
-
-```php
-function unwrapLogger([ bool $recursive = true]) : \Psr\Log\LoggerInterface
-```
-
-Returns the underlying logger that this logger wraps.  
-  
-If $recursive is true, this method will unwrap all nested loggers and  
-return the innermost logger.  
-  
-If $recursive is false, this method will return the immediate underlying  
-logger without unwrapping further.
-
 ### Class: Corpus\Loggers\Interfaces\WithAdditionalLoggersInterface
 
 #### Method: WithAdditionalLoggersInterface->withAdditionalLoggers
@@ -189,6 +170,35 @@ function withAddedContext(array $context) : self
 
 Returns a new instance with the given context  
 added to the existing context.
+
+### Class: Corpus\Loggers\Interfaces\WrappedLoggerInterface
+
+WrappedLoggerInterface is an interface for loggers that can be unwrapped
+to access the underlying logger.
+
+#### Method: WrappedLoggerInterface->getWrappedLogger
+
+```php
+function getWrappedLogger() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapLogger() method
+
+---
+
+#### Method: WrappedLoggerInterface->unwrapLogger
+
+```php
+function unwrapLogger() : \Psr\Log\LoggerInterface
+```
+
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
 
 ### Class: Corpus\Loggers\LoggerVerbosityFilter
 
@@ -239,19 +249,29 @@ Returns a new instance with the specified verbosity level callback.
 
 ---
 
+#### Method: LoggerVerbosityFilter->getWrappedLogger
+
+```php
+function getWrappedLogger() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapLogger() method
+
+---
+
 #### Method: LoggerVerbosityFilter->unwrapLogger
 
 ```php
-function unwrapLogger([ bool $recursive = true]) : \Psr\Log\LoggerInterface
+function unwrapLogger() : \Psr\Log\LoggerInterface
 ```
 
-Returns the underlying logger that this logger wraps.  
-  
-If $recursive is true, this method will unwrap all nested loggers and  
-return the innermost logger.  
-  
-If $recursive is false, this method will return the immediate underlying  
-logger without unwrapping further.
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
 
 ### Class: Corpus\Loggers\LoggerWithContext
 
@@ -300,19 +320,29 @@ added to the existing context.
 
 ---
 
+#### Method: LoggerWithContext->getWrappedLogger
+
+```php
+function getWrappedLogger() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapLogger() method
+
+---
+
 #### Method: LoggerWithContext->unwrapLogger
 
 ```php
-function unwrapLogger([ bool $recursive = true]) : \Psr\Log\LoggerInterface
+function unwrapLogger() : \Psr\Log\LoggerInterface
 ```
 
-Returns the underlying logger that this logger wraps.  
-  
-If $recursive is true, this method will unwrap all nested loggers and  
-return the innermost logger.  
-  
-If $recursive is false, this method will return the immediate underlying  
-logger without unwrapping further.
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
 
 ### Class: Corpus\Loggers\LogLevelFilter
 
@@ -343,19 +373,29 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 
 ---
 
+#### Method: LogLevelFilter->getWrappedLogger
+
+```php
+function getWrappedLogger() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapLogger() method
+
+---
+
 #### Method: LogLevelFilter->unwrapLogger
 
 ```php
-function unwrapLogger([ bool $recursive = true]) : \Psr\Log\LoggerInterface
+function unwrapLogger() : \Psr\Log\LoggerInterface
 ```
 
-Returns the underlying logger that this logger wraps.  
-  
-If $recursive is true, this method will unwrap all nested loggers and  
-return the innermost logger.  
-  
-If $recursive is false, this method will return the immediate underlying  
-logger without unwrapping further.
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
 
 ### Class: Corpus\Loggers\LogLevelLoggerMux
 
@@ -542,12 +582,3 @@ function __construct($resource)
 **Throws**: `\Corpus\Loggers\Exceptions\LoggerArgumentException` - If the given resource is not a stream
 
 **Throws**: `\Corpus\Loggers\Exceptions\LoggerInitException` - If the given resource is not writable
-
-### Class: Corpus\Loggers\Traits\UnwrapLoggerTrait
-
-UnwrapLoggerTrait is a trait that provides an implementation of the
-unwrapLogger() method for loggers that implement the UnwrappableLoggerInterface.
-
-
-
-#### Undocumented Method: `UnwrapLoggerTrait->unwrapLogger([ bool $recursive = true])`
