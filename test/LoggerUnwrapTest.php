@@ -11,7 +11,7 @@ class LoggerUnwrapTest extends TestCase {
 		$loggerWithContext = new LoggerWithContext(
 			new LoggerWithContext(
 			new LoggerVerbosityFilter(
-				new LogLevelFilter($loggerMemory, ['foo' => 'bar']),
+				new LogLevelFilter($loggerMemory, [\Psr\Log\LogLevel::INFO]),
 				1), [
 					'request_id' => 123,
 				]), []);
