@@ -18,12 +18,12 @@ interface WrappedLoggerInterface {
 	 * itself be a wrapper around another logger. If you want to access the
 	 * innermost logger, you can use the unwrapLogger() method
 	 */
-	public function getWrappedLogger() : LoggerInterface;
+	public function unwrap() : LoggerInterface;
 
 	/**
 	 * Returns the underlying logger that this logger wraps, unwrapping any
 	 * nested wrapping loggers recursively.
 	 */
-	public function unwrapLogger() : LoggerInterface;
+	public function unwrapAll() : LoggerInterface;
 
 }

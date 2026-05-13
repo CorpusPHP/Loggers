@@ -13,13 +13,13 @@ use Psr\Log\LoggerInterface;
  */
 trait UnwrapLoggerTrait {
 
-	abstract public function getWrappedLogger() : LoggerInterface;
+	abstract public function unwrap() : LoggerInterface;
 
-	public function unwrapLogger() : LoggerInterface {
-		$logger = $this->getWrappedLogger();
+	public function unwrapAll() : LoggerInterface {
+		$logger = $this->unwrap();
 		for(;;) {
 			if( $logger instanceof WrappedLoggerInterface ) {
-				$logger = $logger->getWrappedLogger();
+				$logger = $logger->unwrap();
 
 				continue;
 			}

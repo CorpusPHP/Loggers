@@ -176,10 +176,10 @@ added to the existing context.
 WrappedLoggerInterface is an interface for loggers that can be unwrapped
 to access the underlying logger.
 
-#### Method: WrappedLoggerInterface->getWrappedLogger
+#### Method: WrappedLoggerInterface->unwrap
 
 ```php
-function getWrappedLogger() : \Psr\Log\LoggerInterface
+function unwrap() : \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -191,10 +191,10 @@ innermost logger, you can use the unwrapLogger() method
 
 ---
 
-#### Method: WrappedLoggerInterface->unwrapLogger
+#### Method: WrappedLoggerInterface->unwrapAll
 
 ```php
-function unwrapLogger() : \Psr\Log\LoggerInterface
+function unwrapAll() : \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -249,10 +249,10 @@ Returns a new instance with the specified verbosity level callback.
 
 ---
 
-#### Method: LoggerVerbosityFilter->getWrappedLogger
+#### Method: LoggerVerbosityFilter->unwrap
 
 ```php
-function getWrappedLogger() : \Psr\Log\LoggerInterface
+function unwrap() : \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -264,10 +264,10 @@ innermost logger, you can use the unwrapLogger() method
 
 ---
 
-#### Method: LoggerVerbosityFilter->unwrapLogger
+#### Method: LoggerVerbosityFilter->unwrapAll
 
 ```php
-function unwrapLogger() : \Psr\Log\LoggerInterface
+function unwrapAll() : \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -320,10 +320,10 @@ added to the existing context.
 
 ---
 
-#### Method: LoggerWithContext->getWrappedLogger
+#### Method: LoggerWithContext->unwrap
 
 ```php
-function getWrappedLogger() : \Psr\Log\LoggerInterface
+function unwrap() : \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -335,10 +335,10 @@ innermost logger, you can use the unwrapLogger() method
 
 ---
 
-#### Method: LoggerWithContext->unwrapLogger
+#### Method: LoggerWithContext->unwrapAll
 
 ```php
-function unwrapLogger() : \Psr\Log\LoggerInterface
+function unwrapAll() : \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -373,10 +373,10 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 
 ---
 
-#### Method: LogLevelFilter->getWrappedLogger
+#### Method: LogLevelFilter->unwrap
 
 ```php
-function getWrappedLogger() : \Psr\Log\LoggerInterface
+function unwrap() : \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -388,10 +388,10 @@ innermost logger, you can use the unwrapLogger() method
 
 ---
 
-#### Method: LogLevelFilter->unwrapLogger
+#### Method: LogLevelFilter->unwrapAll
 
 ```php
-function unwrapLogger() : \Psr\Log\LoggerInterface
+function unwrapAll() : \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  

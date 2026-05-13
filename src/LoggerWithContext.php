@@ -58,7 +58,7 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 		return $clone;
 	}
 
-	public function getWrappedLogger() : LoggerInterface {
+	public function unwrap() : LoggerInterface {
 		return $this->logger;
 	}
 

@@ -98,7 +98,7 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 		return 0;
 	}
 
-	public function getWrappedLogger() : LoggerInterface {
+	public function unwrap() : LoggerInterface {
 		return $this->logger;
 	}
 

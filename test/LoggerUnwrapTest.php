@@ -16,7 +16,7 @@ class LoggerUnwrapTest extends TestCase {
 					'request_id' => 123,
 				]), []);
 
-		$this->assertSame($loggerMemory, $loggerWithContext->unwrapLogger());
+		$this->assertSame($loggerMemory, $loggerWithContext->unwrapAll());
 	}
 
 }

@@ -57,7 +57,7 @@ class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 		}
 	}
 
-	public function getWrappedLogger() : LoggerInterface {
+	public function unwrap() : LoggerInterface {
 		return $this->logger;
 	}
 
