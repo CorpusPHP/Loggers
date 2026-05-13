@@ -16,7 +16,7 @@ trait UnwrapLoggerTrait {
 	abstract public function getWrappedLogger() : LoggerInterface;
 
 	public function unwrapLogger() : LoggerInterface {
-		$logger = $this->logger;
+		$logger = $this->getWrappedLogger();
 		for(;;) {
 			if( $logger instanceof WrappedLoggerInterface ) {
 				$logger = $logger->unwrapLogger(false);
