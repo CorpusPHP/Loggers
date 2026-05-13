@@ -171,6 +171,35 @@ function withAddedContext(array $context) : self
 Returns a new instance with the given context  
 added to the existing context.
 
+### Class: Corpus\Loggers\Interfaces\WrappedLoggerInterface
+
+WrappedLoggerInterface is an interface for loggers that can be unwrapped
+to access the underlying logger.
+
+#### Method: WrappedLoggerInterface->unwrap
+
+```php
+function unwrap() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapAll() method
+
+---
+
+#### Method: WrappedLoggerInterface->unwrapAll
+
+```php
+function unwrapAll() : \Psr\Log\LoggerInterface
+```
+
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
+
 ### Class: Corpus\Loggers\LoggerVerbosityFilter
 
 LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.
@@ -218,6 +247,32 @@ function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback) : 
 
 Returns a new instance with the specified verbosity level callback.
 
+---
+
+#### Method: LoggerVerbosityFilter->unwrap
+
+```php
+function unwrap() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapAll() method
+
+---
+
+#### Method: LoggerVerbosityFilter->unwrapAll
+
+```php
+function unwrapAll() : \Psr\Log\LoggerInterface
+```
+
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
+
 ### Class: Corpus\Loggers\LoggerWithContext
 
 LoggerWithContext is a logger that adds a given context to all log messages
@@ -263,6 +318,32 @@ function withAddedContext(array $context) : self
 Returns a new instance with the given context  
 added to the existing context.
 
+---
+
+#### Method: LoggerWithContext->unwrap
+
+```php
+function unwrap() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapAll() method
+
+---
+
+#### Method: LoggerWithContext->unwrapAll
+
+```php
+function unwrapAll() : \Psr\Log\LoggerInterface
+```
+
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
+
 ### Class: Corpus\Loggers\LogLevelFilter
 
 LogLevelFilter is a PSR Logger that filters logs based on the log level.
@@ -289,6 +370,32 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 
 - ***string[]*** `$levels` - The log levels to filter.
 - ***bool*** `$exclude` - Whether to exclude the given levels, or include them.
+
+---
+
+#### Method: LogLevelFilter->unwrap
+
+```php
+function unwrap() : \Psr\Log\LoggerInterface
+```
+
+Returns the logger directly wrapped by the current logger, without  
+unwrapping any nested loggers.  
+  
+This method allows access to the immediate underlying logger, which may  
+itself be a wrapper around another logger. If you want to access the  
+innermost logger, you can use the unwrapAll() method
+
+---
+
+#### Method: LogLevelFilter->unwrapAll
+
+```php
+function unwrapAll() : \Psr\Log\LoggerInterface
+```
+
+Returns the underlying logger that this logger wraps, unwrapping any  
+nested wrapping loggers recursively.
 
 ### Class: Corpus\Loggers\LogLevelLoggerMux
 

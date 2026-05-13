@@ -2,6 +2,8 @@
 
 namespace Corpus\Loggers;
 
+use Corpus\Loggers\Interfaces\WrappedLoggerInterface;
+use Corpus\Loggers\Traits\UnwrapTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 use Psr\Log\LogLevel;
@@ -21,9 +23,10 @@ use Psr\Log\LogLevel;
  *
  * The verbosity level can be changed by calling withVerbosity()
  */
-class LoggerVerbosityFilter implements LoggerInterface {
+class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 
 	use LoggerTrait;
+	use UnwrapTrait;
 
 	private LoggerInterface $logger;
 	private int $verbosity;
@@ -93,6 +96,10 @@ class LoggerVerbosityFilter implements LoggerInterface {
 		}
 
 		return 0;
+	}
+
+	public function unwrap() : LoggerInterface {
+		return $this->logger;
 	}
 
 }
