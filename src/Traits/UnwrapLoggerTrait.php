@@ -19,7 +19,7 @@ trait UnwrapLoggerTrait {
 		$logger = $this->getWrappedLogger();
 		for(;;) {
 			if( $logger instanceof WrappedLoggerInterface ) {
-				$logger = $logger->unwrapLogger(false);
+				$logger = $logger->getWrappedLogger();
 
 				continue;
 			}
