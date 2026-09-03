@@ -2,6 +2,8 @@
 
 namespace Corpus\Loggers;
 
+use Corpus\Loggers\Interfaces\WrappedLoggerInterface;
+use Corpus\Loggers\Traits\UnwrapTrait;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
@@ -19,9 +21,10 @@ use Psr\Log\LoggerTrait;
  * This logger accepts a list of log levels to filter, and a boolean indicating
  * whether to exclude or include the given log levels.
  */
-class LogLevelFilter implements LoggerInterface {
+class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 
 	use LoggerTrait;
+	use UnwrapTrait;
 
 	private LoggerInterface $logger;
 	/** @var string[] */
@@ -52,6 +55,10 @@ class LogLevelFilter implements LoggerInterface {
 				$this->logger->log($level, $message, $context);
 			}
 		}
+	}
+
+	public function unwrap() : LoggerInterface {
+		return $this->logger;
 	}
 
 }
