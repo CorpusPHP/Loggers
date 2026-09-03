@@ -84,4 +84,24 @@ class LoggerWithContextTest extends TestCase {
 		], $memoryLogger->getLogs());
 	}
 
+	public function test_numericContextKeys_arePreserved() : void {
+		$memoryLogger = new MemoryLogger;
+		$logger       = new LoggerWithContext($memoryLogger, [ 2 => 'initial' ]);
+
+		$logger = $logger->withAddedContext([ 4 => 'additional' ]);
+		$logger->log('info', 'test', [ 6 => 'per-message' ]);
+
+		$this->assertSame([
+			[
+				'level'   => 'info',
+				'message' => 'test',
+				'context' => [
+					2 => 'initial',
+					4 => 'additional',
+					6 => 'per-message',
+				],
+			],
+		], $memoryLogger->getLogs());
+	}
+
 }

@@ -43,8 +43,9 @@ class StreamResourceLogger implements LoggerInterface {
 	/**
 	 * @inheritDoc See LoggerInterface::log()
 	 *
-	 * @param string|\Stringable     $message
-	 * @param array<array-key,mixed> $context
+	 * @param mixed              $level   The log level
+	 * @param string|\Stringable $message
+	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
