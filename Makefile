@@ -11,6 +11,7 @@ fix: cbf
 test: cs
 	vendor/bin/phpunit
 	PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --dry-run
+	vendor/bin/phpstan analyse
 
 .PHONY: cs
 cs:

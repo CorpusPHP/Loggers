@@ -43,6 +43,10 @@ class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 *
+	 * @param mixed              $level   The log level
+	 * @param string|\Stringable $message The log message
+	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {

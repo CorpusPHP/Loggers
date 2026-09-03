@@ -18,10 +18,15 @@ class MemoryLogger implements LoggerInterface {
 	public const KEY_MESSAGE = 'message';
 	public const KEY_CONTEXT = 'context';
 
+	/** @var list<array{level:mixed,message:string|\Stringable,context:mixed[]}> */
 	private array $logs = [];
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 *
+	 * @param mixed              $level   The log level
+	 * @param string|\Stringable $message
+	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
@@ -38,6 +43,7 @@ class MemoryLogger implements LoggerInterface {
 	 * - MemoryLogger::KEY_CONTEXT : The log context
 	 *
 	 * @return array[]
+	 * @phpstan-return list<array{level:mixed,message:string|\Stringable,context:mixed[]}>
 	 */
 	public function getLogs() : array {
 		return $this->logs;
@@ -55,9 +61,10 @@ class MemoryLogger implements LoggerInterface {
 	 *
 	 * It is exposed publicly so that it may be used in tests.
 	 *
-	 * @param mixed   $level   The log level
-	 * @param string  $message The log message
-	 * @param mixed[] $context The log context
+	 * @param mixed              $level   The log level
+	 * @param string|\Stringable $message The log message
+	 * @param mixed[]            $context The log context
+	 * @return array{level:mixed,message:string|\Stringable,context:mixed[]}
 	 * @mddoc-ignore
 	 */
 	public static function makeLogRecord( $level, $message, array $context = [] ) : array {

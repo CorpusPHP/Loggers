@@ -42,6 +42,10 @@ class StreamResourceLogger implements LoggerInterface {
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
+	 *
+	 * @param mixed              $level   The log level
+	 * @param string|\Stringable $message
+	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
@@ -49,8 +53,8 @@ class StreamResourceLogger implements LoggerInterface {
 			$this->stream,
 			"%s %9s: %s\n",
 			date('c'),
-			$level,
-			is_string($message) ? $message : var_export($message, true)
+			(is_string($level) || (is_object($level) && method_exists($level, '__toString'))) ? (string)$level : var_export($level, true),
+			(is_string($message) || (is_object($message) && method_exists($message, '__toString'))) ? (string)$message : var_export($message, true)
 		);
 
 		$max = ($context ? max(array_map('strlen', array_keys($context))) : 0) + 4;
