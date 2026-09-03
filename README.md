@@ -105,7 +105,7 @@ array (
 
 ## Documentation
 
-### Class: Corpus\Loggers\Interfaces\LoggerWithContextInterface
+### Class: \Corpus\Loggers\Interfaces\LoggerWithContextInterface
 
 #### Method: LoggerWithContextInterface->withContext
 
@@ -115,6 +115,10 @@ function withContext(array $context) : self
 
 Returns a new instance with the given context  
 replacing the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ---
 
@@ -127,7 +131,11 @@ function withAddedContext(array $context) : self
 Returns a new instance with the given context  
 added to the existing context.
 
-### Class: Corpus\Loggers\Interfaces\MultiLoggerInterface
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
+### Class: \Corpus\Loggers\Interfaces\MultiLoggerInterface
 
 #### Method: MultiLoggerInterface->withAdditionalLoggers
 
@@ -138,7 +146,7 @@ function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
 withAdditionalLoggers returns a new instance with the given loggers  
 added to the list of loggers to delegate to.
 
-### Class: Corpus\Loggers\Interfaces\WithAdditionalLoggersInterface
+### Class: \Corpus\Loggers\Interfaces\WithAdditionalLoggersInterface
 
 #### Method: WithAdditionalLoggersInterface->withAdditionalLoggers
 
@@ -149,7 +157,7 @@ function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
 withAdditionalLoggers returns a new instance with the given loggers  
 added to the list of loggers to delegate to.
 
-### Class: Corpus\Loggers\Interfaces\WithContextInterface
+### Class: \Corpus\Loggers\Interfaces\WithContextInterface
 
 #### Method: WithContextInterface->withContext
 
@@ -159,6 +167,10 @@ function withContext(array $context) : self
 
 Returns a new instance with the given context  
 replacing the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ---
 
@@ -171,7 +183,11 @@ function withAddedContext(array $context) : self
 Returns a new instance with the given context  
 added to the existing context.
 
-### Class: Corpus\Loggers\Interfaces\WrappedLoggerInterface
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
+### Class: \Corpus\Loggers\Interfaces\WrappedLoggerInterface
 
 WrappedLoggerInterface is an interface for loggers that can be unwrapped
 to access the underlying logger.
@@ -200,7 +216,7 @@ function unwrapAll() : \Psr\Log\LoggerInterface
 Returns the underlying logger that this logger wraps, unwrapping any  
 nested wrapping loggers recursively.
 
-### Class: Corpus\Loggers\LoggerVerbosityFilter
+### Class: \Corpus\Loggers\LoggerVerbosityFilter
 
 LoggerVerbosityFilter mutes log messages based on a given integer verbosity level.
 
@@ -273,7 +289,7 @@ function unwrapAll() : \Psr\Log\LoggerInterface
 Returns the underlying logger that this logger wraps, unwrapping any  
 nested wrapping loggers recursively.
 
-### Class: Corpus\Loggers\LoggerWithContext
+### Class: \Corpus\Loggers\LoggerWithContext
 
 LoggerWithContext is a logger that adds a given context to all log messages
 before delegating to another logger.
@@ -307,6 +323,10 @@ function withContext(array $context) : self
 Returns a new instance with the given context  
 replacing the existing context.
 
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
+
 ---
 
 #### Method: LoggerWithContext->withAddedContext
@@ -317,6 +337,10 @@ function withAddedContext(array $context) : self
 
 Returns a new instance with the given context  
 added to the existing context.
+
+##### Parameters:
+
+- ***array*** `$context` - The context to add to all log messages.
 
 ---
 
@@ -344,7 +368,7 @@ function unwrapAll() : \Psr\Log\LoggerInterface
 Returns the underlying logger that this logger wraps, unwrapping any  
 nested wrapping loggers recursively.
 
-### Class: Corpus\Loggers\LogLevelFilter
+### Class: \Corpus\Loggers\LogLevelFilter
 
 LogLevelFilter is a PSR Logger that filters logs based on the log level.
 
@@ -397,7 +421,7 @@ function unwrapAll() : \Psr\Log\LoggerInterface
 Returns the underlying logger that this logger wraps, unwrapping any  
 nested wrapping loggers recursively.
 
-### Class: Corpus\Loggers\LogLevelLoggerMux
+### Class: \Corpus\Loggers\LogLevelLoggerMux
 
 LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers
 based on the log level.
@@ -493,7 +517,7 @@ function withDebugLogger(\Psr\Log\LoggerInterface $logger) : self
 
 Returns a new instance with the specified logger handling the Debug log level.
 
-### Class: Corpus\Loggers\MemoryLogger
+### Class: \Corpus\Loggers\MemoryLogger
 
 MemoryLogger is a PSR Logger that stores all logs in local memory.
 
@@ -540,7 +564,7 @@ function clearLogs() : void
 
 clearLogs clears all logs that have been logged to this logger.
 
-### Class: Corpus\Loggers\MultiLogger
+### Class: \Corpus\Loggers\MultiLogger
 
 MultiLogger is a PSR Logger that delegates logs to multiple other loggers.
 
@@ -563,7 +587,7 @@ function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
 withAdditionalLoggers returns a new instance with the given loggers  
 added to the list of loggers to delegate to.
 
-### Class: Corpus\Loggers\StreamResourceLogger
+### Class: \Corpus\Loggers\StreamResourceLogger
 
 StreamResourceLogger is a PSR Logger that writes to a stream resource.
 
