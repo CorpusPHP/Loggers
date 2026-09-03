@@ -49,7 +49,7 @@ class StreamResourceLogger implements LoggerInterface {
 			$this->stream,
 			"%s %9s: %s\n",
 			date('c'),
-			(string)$level,
+			is_string($level) ? $level : var_export($level, true),
 			is_string($message) ? $message : var_export($message, true)
 		);
 
