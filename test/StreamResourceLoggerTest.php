@@ -71,6 +71,25 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('notice', $output);
 	}
 
+	public function test_log_withStringableMessage() : void {
+		$stream = fopen('php://memory', 'r+');
+		$logger = new StreamResourceLogger($stream);
+
+		$logger->log('notice', new class {
+
+			public function __toString() : string {
+				return 'hello world';
+			}
+
+		});
+
+		rewind($stream);
+		$output = stream_get_contents($stream);
+		fclose($stream);
+
+		$this->assertStringContainsString('hello world', $output);
+	}
+
 	public function test_constructor_throwsOnNonResource() : void {
 		$this->expectException(LoggerArgumentException::class);
 		new StreamResourceLogger('not a resource');

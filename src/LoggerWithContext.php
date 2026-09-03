@@ -20,7 +20,7 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 	use LoggerTrait;
 	use UnwrapTrait;
 
-	/** @var array<string,mixed> */
+	/** @var array<array-key,mixed> */
 	private array $context;
 	private LoggerInterface $logger;
 
@@ -29,8 +29,8 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 	 *
 	 * The given context will be added to all log messages.
 	 *
-	 * @param LoggerInterface     $logger  The logger to delegate to.
-	 * @param array<string,mixed> $context The context to add to all log messages.
+	 * @param LoggerInterface        $logger  The logger to delegate to.
+	 * @param array<array-key,mixed> $context The context to add to all log messages.
 	 */
 	public function __construct( LoggerInterface $logger, array $context = [] ) {
 		$this->logger  = $logger;
@@ -40,7 +40,8 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 	/**
 	 * @inheritDoc See LoggerInterface::log()
 	 *
-	 * @param array<string,mixed> $context
+	 * @param string|\Stringable     $message
+	 * @param array<array-key,mixed> $context
 	 * @mddoc-ignore
 	 */
 	public function log( $level, $message, array $context = [] ) : void {
