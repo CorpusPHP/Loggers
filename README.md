@@ -110,13 +110,13 @@ array (
 #### Method: LoggerWithContextInterface->withContext
 
 ```php
-function withContext(array $context) : self
+function withContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 replacing the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -125,13 +125,13 @@ replacing the existing context.
 #### Method: LoggerWithContextInterface->withAddedContext
 
 ```php
-function withAddedContext(array $context) : self
+function withAddedContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 added to the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -140,7 +140,7 @@ added to the existing context.
 #### Method: MultiLoggerInterface->withAdditionalLoggers
 
 ```php
-function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
+function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers): self
 ```
 
 withAdditionalLoggers returns a new instance with the given loggers  
@@ -151,7 +151,7 @@ added to the list of loggers to delegate to.
 #### Method: WithAdditionalLoggersInterface->withAdditionalLoggers
 
 ```php
-function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
+function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers): self
 ```
 
 withAdditionalLoggers returns a new instance with the given loggers  
@@ -162,13 +162,13 @@ added to the list of loggers to delegate to.
 #### Method: WithContextInterface->withContext
 
 ```php
-function withContext(array $context) : self
+function withContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 replacing the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -177,13 +177,13 @@ replacing the existing context.
 #### Method: WithContextInterface->withAddedContext
 
 ```php
-function withAddedContext(array $context) : self
+function withAddedContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 added to the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -195,7 +195,7 @@ to access the underlying logger.
 #### Method: WrappedLoggerInterface->unwrap
 
 ```php
-function unwrap() : \Psr\Log\LoggerInterface
+function unwrap(): \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -210,7 +210,7 @@ innermost logger, you can use the unwrapAll() method
 #### Method: WrappedLoggerInterface->unwrapAll
 
 ```php
-function unwrapAll() : \Psr\Log\LoggerInterface
+function unwrapAll(): \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -235,10 +235,10 @@ The verbosity level can be changed by calling withVerbosity()
 #### Method: LoggerVerbosityFilter->__construct
 
 ```php
-function __construct(\Psr\Log\LoggerInterface $logger [, int $verbosity = 0 [, ?callable $verbosityFromLevelCallback = null]])
+function __construct(\Psr\Log\LoggerInterface $logger, int $verbosity = 0, ?callable $verbosityFromLevelCallback = null)
 ```
 
-##### Parameters:
+##### Parameters
 
 - ***callable*** | ***null*** `$verbosityFromLevelCallback` - A callback that takes a Psr\Log\LogLevel log level string and
 returns an integer verbosity level. If null, the default callback will be used.
@@ -248,7 +248,7 @@ returns an integer verbosity level. If null, the default callback will be used.
 #### Method: LoggerVerbosityFilter->withVerbosity
 
 ```php
-function withVerbosity(int $verbosity) : self
+function withVerbosity(int $verbosity): self
 ```
 
 Returns a new instance with the specified verbosity level.
@@ -258,7 +258,7 @@ Returns a new instance with the specified verbosity level.
 #### Method: LoggerVerbosityFilter->withVerbosityFromLevelCallback
 
 ```php
-function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback) : self
+function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback): self
 ```
 
 Returns a new instance with the specified verbosity level callback.
@@ -268,7 +268,7 @@ Returns a new instance with the specified verbosity level callback.
 #### Method: LoggerVerbosityFilter->unwrap
 
 ```php
-function unwrap() : \Psr\Log\LoggerInterface
+function unwrap(): \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -283,7 +283,7 @@ innermost logger, you can use the unwrapAll() method
 #### Method: LoggerVerbosityFilter->unwrapAll
 
 ```php
-function unwrapAll() : \Psr\Log\LoggerInterface
+function unwrapAll(): \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -300,14 +300,14 @@ request ID, IP address or the current user ID.
 #### Method: LoggerWithContext->__construct
 
 ```php
-function __construct(\Psr\Log\LoggerInterface $logger [, array $context = []])
+function __construct(\Psr\Log\LoggerInterface $logger, array $context = [])
 ```
 
 Create a new LoggerWithContext instance with the given logger and context.  
   
 The given context will be added to all log messages.
 
-##### Parameters:
+##### Parameters
 
 - ***\Psr\Log\LoggerInterface*** `$logger` - The logger to delegate to.
 - ***mixed[]*** `$context` - The context to add to all log messages.
@@ -317,13 +317,13 @@ The given context will be added to all log messages.
 #### Method: LoggerWithContext->withContext
 
 ```php
-function withContext(array $context) : self
+function withContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 replacing the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -332,13 +332,13 @@ replacing the existing context.
 #### Method: LoggerWithContext->withAddedContext
 
 ```php
-function withAddedContext(array $context) : self
+function withAddedContext(array $context): self
 ```
 
 Returns a new instance with the given context  
 added to the existing context.
 
-##### Parameters:
+##### Parameters
 
 - ***mixed[]*** `$context` - The context to add to all log messages.
 
@@ -347,7 +347,7 @@ added to the existing context.
 #### Method: LoggerWithContext->unwrap
 
 ```php
-function unwrap() : \Psr\Log\LoggerInterface
+function unwrap(): \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -362,7 +362,7 @@ innermost logger, you can use the unwrapAll() method
 #### Method: LoggerWithContext->unwrapAll
 
 ```php
-function unwrapAll() : \Psr\Log\LoggerInterface
+function unwrapAll(): \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -387,10 +387,10 @@ whether to exclude or include the given log levels.
 #### Method: LogLevelFilter->__construct
 
 ```php
-function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $exclude = false])
+function __construct(\Psr\Log\LoggerInterface $logger, array $levels, bool $exclude = false)
 ```
 
-##### Parameters:
+##### Parameters
 
 - ***string[]*** `$levels` - The log levels to filter.
 - ***bool*** `$exclude` - Whether to exclude the given levels, or include them.
@@ -400,7 +400,7 @@ function __construct(\Psr\Log\LoggerInterface $logger, array $levels [, bool $ex
 #### Method: LogLevelFilter->unwrap
 
 ```php
-function unwrap() : \Psr\Log\LoggerInterface
+function unwrap(): \Psr\Log\LoggerInterface
 ```
 
 Returns the logger directly wrapped by the current logger, without  
@@ -415,7 +415,7 @@ innermost logger, you can use the unwrapAll() method
 #### Method: LogLevelFilter->unwrapAll
 
 ```php
-function unwrapAll() : \Psr\Log\LoggerInterface
+function unwrapAll(): \Psr\Log\LoggerInterface
 ```
 
 Returns the underlying logger that this logger wraps, unwrapping any  
@@ -429,10 +429,10 @@ based on the log level.
 #### Method: LogLevelLoggerMux->__construct
 
 ```php
-function __construct([ ?\Psr\Log\LoggerInterface $defaultLogger = null [, ?\Psr\Log\LoggerInterface $emergencyLogger = null [, ?\Psr\Log\LoggerInterface $alertLogger = null [, ?\Psr\Log\LoggerInterface $criticalLogger = null [, ?\Psr\Log\LoggerInterface $errorLogger = null [, ?\Psr\Log\LoggerInterface $warningLogger = null [, ?\Psr\Log\LoggerInterface $noticeLogger = null [, ?\Psr\Log\LoggerInterface $infoLogger = null [, ?\Psr\Log\LoggerInterface $debugLogger = null]]]]]]]]])
+function __construct(?\Psr\Log\LoggerInterface $defaultLogger = null, ?\Psr\Log\LoggerInterface $emergencyLogger = null, ?\Psr\Log\LoggerInterface $alertLogger = null, ?\Psr\Log\LoggerInterface $criticalLogger = null, ?\Psr\Log\LoggerInterface $errorLogger = null, ?\Psr\Log\LoggerInterface $warningLogger = null, ?\Psr\Log\LoggerInterface $noticeLogger = null, ?\Psr\Log\LoggerInterface $infoLogger = null, ?\Psr\Log\LoggerInterface $debugLogger = null)
 ```
 
-##### Parameters:
+##### Parameters
 
 - ***\Psr\Log\LoggerInterface*** | ***null*** `$defaultLogger` - The default logger to use for levels where no other logger
 is specified. If null, a Psr\Log\NullLogger will be used.
@@ -442,7 +442,7 @@ is specified. If null, a Psr\Log\NullLogger will be used.
 #### Method: LogLevelLoggerMux->withEmergencyLogger
 
 ```php
-function withEmergencyLogger(\Psr\Log\LoggerInterface $logger) : self
+function withEmergencyLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Emergency log level.
@@ -452,7 +452,7 @@ Returns a new instance with the specified logger handling the Emergency log leve
 #### Method: LogLevelLoggerMux->withAlertLogger
 
 ```php
-function withAlertLogger(\Psr\Log\LoggerInterface $logger) : self
+function withAlertLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Alert log level.
@@ -462,7 +462,7 @@ Returns a new instance with the specified logger handling the Alert log level.
 #### Method: LogLevelLoggerMux->withCriticalLogger
 
 ```php
-function withCriticalLogger(\Psr\Log\LoggerInterface $logger) : self
+function withCriticalLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Critical log level.
@@ -472,7 +472,7 @@ Returns a new instance with the specified logger handling the Critical log level
 #### Method: LogLevelLoggerMux->withErrorLogger
 
 ```php
-function withErrorLogger(\Psr\Log\LoggerInterface $logger) : self
+function withErrorLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Error log level.
@@ -482,7 +482,7 @@ Returns a new instance with the specified logger handling the Error log level.
 #### Method: LogLevelLoggerMux->withWarningLogger
 
 ```php
-function withWarningLogger(\Psr\Log\LoggerInterface $logger) : self
+function withWarningLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Warning log level.
@@ -492,7 +492,7 @@ Returns a new instance with the specified logger handling the Warning log level.
 #### Method: LogLevelLoggerMux->withNoticeLogger
 
 ```php
-function withNoticeLogger(\Psr\Log\LoggerInterface $logger) : self
+function withNoticeLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Notice log level.
@@ -502,7 +502,7 @@ Returns a new instance with the specified logger handling the Notice log level.
 #### Method: LogLevelLoggerMux->withInfoLogger
 
 ```php
-function withInfoLogger(\Psr\Log\LoggerInterface $logger) : self
+function withInfoLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Info log level.
@@ -512,7 +512,7 @@ Returns a new instance with the specified logger handling the Info log level.
 #### Method: LogLevelLoggerMux->withDebugLogger
 
 ```php
-function withDebugLogger(\Psr\Log\LoggerInterface $logger) : self
+function withDebugLogger(\Psr\Log\LoggerInterface $logger): self
 ```
 
 Returns a new instance with the specified logger handling the Debug log level.
@@ -539,7 +539,7 @@ class MemoryLogger {
 #### Method: MemoryLogger->getLogs
 
 ```php
-function getLogs() : array
+function getLogs(): array
 ```
 
 getLogs returns all logs that have been logged to this logger.  
@@ -550,7 +550,7 @@ getLogs returns all logs that have been logged to this logger.
 - MemoryLogger::KEY_MESSAGE : The log message  
 - MemoryLogger::KEY_CONTEXT : The log context
 
-##### Returns:
+##### Return Value
 
 - ***array[]***
 
@@ -559,7 +559,7 @@ getLogs returns all logs that have been logged to this logger.
 #### Method: MemoryLogger->clearLogs
 
 ```php
-function clearLogs() : void
+function clearLogs(): void
 ```
 
 clearLogs clears all logs that have been logged to this logger.
@@ -581,7 +581,7 @@ Create a new MultiLogger instance with the given loggers to delegate to.
 #### Method: MultiLogger->withAdditionalLoggers
 
 ```php
-function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers) : self
+function withAdditionalLoggers(\Psr\Log\LoggerInterface ...$loggers): self
 ```
 
 withAdditionalLoggers returns a new instance with the given loggers  
@@ -599,7 +599,7 @@ This is particularly useful for writing to STDERR or STDOUT, or to a file.
 function __construct($resource)
 ```
 
-##### Parameters:
+##### Parameters
 
 - ***resource*** `$resource` - Writable stream resource
 

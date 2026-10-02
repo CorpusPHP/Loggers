@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies with composer
         run: composer install
 
+      - name: Verify documentation is current
+        run: ./vendor/bin/mddoc --dry-run=true
+
       - name: Install PSR Log
         run: |
           composer remove --dev donatj/mddoc
