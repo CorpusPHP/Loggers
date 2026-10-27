@@ -8,9 +8,7 @@ use TRegx\PhpUnit\DataProviders\DataProvider;
 
 class LoggerVerbosityFilterTest extends TestCase {
 
-	/**
-	 * @dataProvider standardVerbosityLevel_logLevelSetMode_provider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('standardVerbosityLevel_logLevelSetMode_provider')]
 	public function test_LoggerVerbosityFilter( int $logLevel, array $loggedLevels, bool $levelMode ): void {
 		$memoryLogger = new MemoryLogger;
 		if( $levelMode ) {
@@ -31,19 +29,17 @@ class LoggerVerbosityFilterTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	public function standardVerbosityLevel_logLevelSetMode_provider(): iterable {
+	public static function standardVerbosityLevel_logLevelSetMode_provider(): iterable {
 		return DataProvider::cross(
-			$this->standardVerbosityLevelProvider(),
-			$this->binaryChoiceProvider(),
+			self::standardVerbosityLevelProvider(),
+			self::binaryChoiceProvider(),
 		);
 	}
 
-	/**
-	 * @dataProvider customCallbackProvider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('customCallbackProvider')]
 	public function test_LoggerVerbosityFilter_customLevelCallback(
 		callable $callback,
-		array $matchedCallbackLevelMap
+		array $matchedCallbackLevelMap,
 	): void {
 		foreach( $matchedCallbackLevelMap as $logLevel => $matchedCallbackLevels ) {
 			$memoryLogger = new MemoryLogger;
@@ -110,7 +106,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 		];
 	}
 
-	public function standardVerbosityLevelProvider(): array {
+	public static function standardVerbosityLevelProvider(): array {
 		return [
 			[ 0, [] ],
 			[ 1, [ LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR ] ],
@@ -120,7 +116,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 		];
 	}
 
-	public function binaryChoiceProvider(): array {
+	public static function binaryChoiceProvider(): array {
 		return [ [ true ], [ false ] ];
 	}
 

@@ -38,7 +38,7 @@ class MultiLogger implements MultiLoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		foreach( $this->loggers as $logger ) {
 			$logger->log($level, $message, $context);
 		}

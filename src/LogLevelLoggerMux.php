@@ -39,7 +39,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 		?LoggerInterface $warningLogger = null,
 		?LoggerInterface $noticeLogger = null,
 		?LoggerInterface $infoLogger = null,
-		?LoggerInterface $debugLogger = null
+		?LoggerInterface $debugLogger = null,
 	) {
 		if( !$defaultLogger ) {
 			$defaultLogger = new NullLogger;
@@ -145,7 +145,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		switch( true ) {
 			case $level === LogLevel::EMERGENCY:
 				$this->emergencyLogger->log($level, $message, $context);

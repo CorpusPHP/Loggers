@@ -17,7 +17,7 @@ class StreamResourceLogger implements LoggerInterface {
 	use LoggerTrait;
 
 	/** @var resource */
-	private $stream;
+	private readonly mixed $stream;
 
 	/**
 	 * @param resource $resource Writable stream resource
@@ -48,7 +48,7 @@ class StreamResourceLogger implements LoggerInterface {
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		fprintf(
 			$this->stream,
 			"%s %9s: %s\n",

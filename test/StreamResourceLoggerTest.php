@@ -56,7 +56,7 @@ class StreamResourceLoggerTest extends TestCase {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
-		$logger->log(new class {
+		$logger->log(new class implements \Stringable {
 
 			public function __toString(): string {
 				return 'notice';
@@ -75,7 +75,7 @@ class StreamResourceLoggerTest extends TestCase {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
-		$logger->log('notice', new class {
+		$logger->log('notice', new class implements \Stringable {
 
 			public function __toString(): string {
 				return 'hello world';

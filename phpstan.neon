@@ -3,5 +3,5 @@ parameters:
 	tmpDir: .phpstan-cache
 	paths:
 		- src
-	phpVersion: 70400
+	phpVersion: 80100
 	treatPhpDocTypesAsCertain: false

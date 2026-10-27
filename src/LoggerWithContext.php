@@ -22,7 +22,7 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 
 	/** @var mixed[] */
 	private array $context;
-	private LoggerInterface $logger;
+	private readonly LoggerInterface $logger;
 
 	/**
 	 * Create a new LoggerWithContext instance with the given logger and context.
@@ -45,7 +45,7 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		$this->logger->log($level, $message, array_replace($this->context, $context));
 	}
 
