@@ -37,7 +37,6 @@ jobs:
         run: composer install
 
       - name: Verify documentation is current
-        if: matrix.php-versions == '8.1'
         run: ./vendor/bin/mddoc --dry-run=true
 
       - name: Install PSR Log
