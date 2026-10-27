@@ -1,13 +1,19 @@
 {
     "name": "corpus/loggers",
-    "description": "Helpful PSR-3 Utility Loggers",
+    "description": "Composable PSR-3 loggers for filtering, routing, adding context, and writing logs to streams.",
     "type": "library",
     "license": "MIT",
     "keywords": [
         "psr-3",
         "logger",
         "log",
-        "logging"
+        "logging",
+        "logging utilities",
+        "log filtering",
+        "log routing",
+        "log context",
+        "stream logging",
+        "memory logging"
     ],
     "require": {
         "psr/log": "^1 || ^2 || ^3",
