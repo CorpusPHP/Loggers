@@ -29,7 +29,7 @@ class MemoryLogger implements LoggerInterface {
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		$this->logs[] = self::makeLogRecord($level, $message, $context);
 	}
 
@@ -45,14 +45,14 @@ class MemoryLogger implements LoggerInterface {
 	 * @return array[]
 	 * @phpstan-return list<array{level:mixed,message:string|\Stringable,context:mixed[]}>
 	 */
-	public function getLogs() : array {
+	public function getLogs(): array {
 		return $this->logs;
 	}
 
 	/**
 	 * clearLogs clears all logs that have been logged to this logger.
 	 */
-	public function clearLogs() : void {
+	public function clearLogs(): void {
 		$this->logs = [];
 	}
 
@@ -67,7 +67,7 @@ class MemoryLogger implements LoggerInterface {
 	 * @return array{level:mixed,message:string|\Stringable,context:mixed[]}
 	 * @mddoc-ignore
 	 */
-	public static function makeLogRecord( $level, $message, array $context = [] ) : array {
+	public static function makeLogRecord( $level, $message, array $context = [] ): array {
 		return [
 			self::KEY_LEVEL   => $level,
 			self::KEY_MESSAGE => $message,

@@ -49,7 +49,7 @@ class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		if( $this->exclude ) {
 			if( !in_array($level, $this->levels, true) ) {
 				$this->logger->log($level, $message, $context);
@@ -61,7 +61,7 @@ class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 		}
 	}
 
-	public function unwrap() : LoggerInterface {
+	public function unwrap(): LoggerInterface {
 		return $this->logger;
 	}
 

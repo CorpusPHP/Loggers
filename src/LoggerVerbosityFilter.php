@@ -45,13 +45,13 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 		$this->logger                     = $logger;
 		$this->verbosity                  = $verbosity;
 		$this->verbosityFromLevelCallback = $verbosityFromLevelCallback
-			?? fn ( string $level ) : int => $this->getVerbosityFromLevel($level);
+			?? fn ( string $level ): int => $this->getVerbosityFromLevel($level);
 	}
 
 	/**
 	 * Returns a new instance with the specified verbosity level.
 	 */
-	public function withVerbosity( int $verbosity ) : self {
+	public function withVerbosity( int $verbosity ): self {
 		$clone            = clone $this;
 		$clone->verbosity = $verbosity;
 
@@ -61,7 +61,7 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 	/**
 	 * Returns a new instance with the specified verbosity level callback.
 	 */
-	public function withVerbosityFromLevelCallback( callable $verbosityFromLevelCallback ) : self {
+	public function withVerbosityFromLevelCallback( callable $verbosityFromLevelCallback ): self {
 		$clone                             = clone $this;
 		$clone->verbosityFromLevelCallback = $verbosityFromLevelCallback;
 
@@ -76,14 +76,14 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		if( $this->verbosity >= ($this->verbosityFromLevelCallback)($level) ) {
 
 			$this->logger->log($level, $message, $context);
 		}
 	}
 
-	private function getVerbosityFromLevel( string $level ) : int {
+	private function getVerbosityFromLevel( string $level ): int {
 		switch( $level ) {
 			case LogLevel::EMERGENCY:
 			case LogLevel::ALERT:
@@ -102,7 +102,7 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 		return 0;
 	}
 
-	public function unwrap() : LoggerInterface {
+	public function unwrap(): LoggerInterface {
 		return $this->logger;
 	}
 

@@ -11,23 +11,23 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $memoryLogger = new MemoryLogger;
 $cliLogger    = new StreamResourceLogger(
-	fopen('php://output', 'w')
+	fopen('php://output', 'w'),
 );
 
 $logger = new MultiLogger(
 	new LogLevelFilter(
 		(new LoggerWithContext($memoryLogger))->withContext([ 'Logger' => 'Number 1' ]),
-		[ Psr\Log\LogLevel::INFO ]
+		[ Psr\Log\LogLevel::INFO ],
 	),
 	new LogLevelFilter(
 		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 2' ]),
-		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ]
+		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ],
 	),
 	new LogLevelFilter(
 		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 3' ]),
 		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ],
-		true // reverse filter - only log levels NOT in the array
-	)
+		true, // reverse filter - only log levels NOT in the array
+	),
 );
 
 $logger->info('Hello World', [ 'hello' => 'world' ]);

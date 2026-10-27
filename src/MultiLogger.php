@@ -23,7 +23,7 @@ class MultiLogger implements MultiLoggerInterface {
 		$this->loggers = $loggers;
 	}
 
-	public function withAdditionalLoggers( LoggerInterface ...$loggers ) : self {
+	public function withAdditionalLoggers( LoggerInterface ...$loggers ): self {
 		$clone = clone $this;
 		$clone->loggers = array_merge($clone->loggers, $loggers);
 
@@ -38,7 +38,7 @@ class MultiLogger implements MultiLoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		foreach( $this->loggers as $logger ) {
 			$logger->log($level, $message, $context);
 		}

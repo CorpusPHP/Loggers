@@ -5,7 +5,7 @@
 [![ci.yml](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml/badge.svg)](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml)
 
 
-Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).
+PSR-3 logger utilities for filtering by level, combining loggers, adding context, and writing to streams.
 
 - **LogLevelFilter** - LogLevelFilter is a PSR Logger that filters logs based on the log level. It can be used to filter out log messages that are not needed for a specific use case.  
 - **LogLevelLoggerMux** - LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers based on the log level.  
@@ -46,23 +46,23 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $memoryLogger = new MemoryLogger;
 $cliLogger    = new StreamResourceLogger(
-	fopen('php://output', 'w')
+	fopen('php://output', 'w'),
 );
 
 $logger = new MultiLogger(
 	new LogLevelFilter(
 		(new LoggerWithContext($memoryLogger))->withContext([ 'Logger' => 'Number 1' ]),
-		[ Psr\Log\LogLevel::INFO ]
+		[ Psr\Log\LogLevel::INFO ],
 	),
 	new LogLevelFilter(
 		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 2' ]),
-		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ]
+		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ],
 	),
 	new LogLevelFilter(
 		(new LoggerWithContext($cliLogger))->withContext([ 'Logger' => 'Number 3' ]),
 		[ Psr\Log\LogLevel::INFO, LogLevel::DEBUG ],
-		true // reverse filter - only log levels NOT in the array
-	)
+		true, // reverse filter - only log levels NOT in the array
+	),
 );
 
 $logger->info('Hello World', [ 'hello' => 'world' ]);
@@ -235,7 +235,11 @@ The verbosity level can be changed by calling withVerbosity()
 #### Method: LoggerVerbosityFilter->__construct
 
 ```php
-function __construct(\Psr\Log\LoggerInterface $logger, int $verbosity = 0, ?callable $verbosityFromLevelCallback = null)
+function __construct(
+	\Psr\Log\LoggerInterface $logger,
+	int $verbosity = 0,
+	?callable $verbosityFromLevelCallback = null,
+)
 ```
 
 ##### Parameters
@@ -258,7 +262,9 @@ Returns a new instance with the specified verbosity level.
 #### Method: LoggerVerbosityFilter->withVerbosityFromLevelCallback
 
 ```php
-function withVerbosityFromLevelCallback(callable $verbosityFromLevelCallback): self
+function withVerbosityFromLevelCallback(
+	callable $verbosityFromLevelCallback,
+): self
 ```
 
 Returns a new instance with the specified verbosity level callback.
@@ -387,7 +393,11 @@ whether to exclude or include the given log levels.
 #### Method: LogLevelFilter->__construct
 
 ```php
-function __construct(\Psr\Log\LoggerInterface $logger, array $levels, bool $exclude = false)
+function __construct(
+	\Psr\Log\LoggerInterface $logger,
+	array $levels,
+	bool $exclude = false,
+)
 ```
 
 ##### Parameters
@@ -429,7 +439,17 @@ based on the log level.
 #### Method: LogLevelLoggerMux->__construct
 
 ```php
-function __construct(?\Psr\Log\LoggerInterface $defaultLogger = null, ?\Psr\Log\LoggerInterface $emergencyLogger = null, ?\Psr\Log\LoggerInterface $alertLogger = null, ?\Psr\Log\LoggerInterface $criticalLogger = null, ?\Psr\Log\LoggerInterface $errorLogger = null, ?\Psr\Log\LoggerInterface $warningLogger = null, ?\Psr\Log\LoggerInterface $noticeLogger = null, ?\Psr\Log\LoggerInterface $infoLogger = null, ?\Psr\Log\LoggerInterface $debugLogger = null)
+function __construct(
+	?\Psr\Log\LoggerInterface $defaultLogger = null,
+	?\Psr\Log\LoggerInterface $emergencyLogger = null,
+	?\Psr\Log\LoggerInterface $alertLogger = null,
+	?\Psr\Log\LoggerInterface $criticalLogger = null,
+	?\Psr\Log\LoggerInterface $errorLogger = null,
+	?\Psr\Log\LoggerInterface $warningLogger = null,
+	?\Psr\Log\LoggerInterface $noticeLogger = null,
+	?\Psr\Log\LoggerInterface $infoLogger = null,
+	?\Psr\Log\LoggerInterface $debugLogger = null,
+)
 ```
 
 ##### Parameters

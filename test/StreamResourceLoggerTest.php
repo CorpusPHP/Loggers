@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 class StreamResourceLoggerTest extends TestCase {
 
-	public function test_log_writesToStream() : void {
+	public function test_log_writesToStream(): void {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
@@ -22,7 +22,7 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('hello world', $output);
 	}
 
-	public function test_log_withContext() : void {
+	public function test_log_withContext(): void {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
@@ -38,7 +38,7 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('value', $output);
 	}
 
-	public function test_log_withNonStringMessage() : void {
+	public function test_log_withNonStringMessage(): void {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
@@ -52,13 +52,13 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('42', $output);
 	}
 
-	public function test_log_withStringableLevel() : void {
+	public function test_log_withStringableLevel(): void {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
 		$logger->log(new class {
 
-			public function __toString() : string {
+			public function __toString(): string {
 				return 'notice';
 			}
 
@@ -71,13 +71,13 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('notice', $output);
 	}
 
-	public function test_log_withStringableMessage() : void {
+	public function test_log_withStringableMessage(): void {
 		$stream = fopen('php://memory', 'r+');
 		$logger = new StreamResourceLogger($stream);
 
 		$logger->log('notice', new class {
 
-			public function __toString() : string {
+			public function __toString(): string {
 				return 'hello world';
 			}
 
@@ -90,12 +90,12 @@ class StreamResourceLoggerTest extends TestCase {
 		$this->assertStringContainsString('hello world', $output);
 	}
 
-	public function test_constructor_throwsOnNonResource() : void {
+	public function test_constructor_throwsOnNonResource(): void {
 		$this->expectException(LoggerArgumentException::class);
 		new StreamResourceLogger('not a resource');
 	}
 
-	public function test_constructor_throwsOnClosedResource() : void {
+	public function test_constructor_throwsOnClosedResource(): void {
 		$tmp = tmpfile();
 		fclose($tmp);
 
@@ -104,7 +104,7 @@ class StreamResourceLoggerTest extends TestCase {
 		new StreamResourceLogger($tmp);
 	}
 
-	public function test_constructor_throwsOnReadOnlyStream() : void {
+	public function test_constructor_throwsOnReadOnlyStream(): void {
 		$stream = fopen('php://memory', 'r');
 
 		try {

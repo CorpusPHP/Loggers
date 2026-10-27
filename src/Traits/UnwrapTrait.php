@@ -13,9 +13,9 @@ use Psr\Log\LoggerInterface;
  */
 trait UnwrapTrait {
 
-	abstract public function unwrap() : LoggerInterface;
+	abstract public function unwrap(): LoggerInterface;
 
-	public function unwrapAll() : LoggerInterface {
+	public function unwrapAll(): LoggerInterface {
 		$logger = $this->unwrap();
 		for(;;) {
 			if( $logger instanceof WrappedLoggerInterface ) {

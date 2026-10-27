@@ -9,7 +9,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $loggers = array_filter(
 	get_declared_classes(),
-	fn ( string $class ) : bool => strpos($class, 'Corpus\\Loggers\\') === 0,
+	fn ( string $class ): bool => strpos($class, 'Corpus\Loggers\\') === 0,
 );
 
 sort($loggers);
