@@ -11,11 +11,5 @@ $finder = PhpCsFixer\Finder::create()
 $config = Corpus\PhpCsFixer\Config::php7x4();
 
 return $config
-	->setRules(
-		array_merge(
-			$config->getRules(),
-			[ '@PHPUnit10x0Migration:risky' => true ],
-		)
-	)
 	->setFinder($finder)
 	->setUnsupportedPhpVersionAllowed(true);

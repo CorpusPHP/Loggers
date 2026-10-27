@@ -31,7 +31,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	public static function standardVerbosityLevel_logLevelSetMode_provider(): iterable {
+	public function standardVerbosityLevel_logLevelSetMode_provider(): iterable {
 		return DataProvider::cross(
 			$this->standardVerbosityLevelProvider(),
 			$this->binaryChoiceProvider(),
