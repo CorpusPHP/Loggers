@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class MultiLoggerTest extends TestCase {
 
-	public function test_MultiLogger_single() : void {
+	public function test_MultiLogger_single(): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new MultiLogger($memoryLogger);
 
@@ -21,7 +21,7 @@ class MultiLoggerTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	public function test_MultiLogger_multiple() : void {
+	public function test_MultiLogger_multiple(): void {
 		$memoryLogger1 = new MemoryLogger;
 		$memoryLogger2 = new MemoryLogger;
 		$logger        = new MultiLogger($memoryLogger1, $memoryLogger2);
@@ -38,7 +38,7 @@ class MultiLoggerTest extends TestCase {
 		$this->assertSame($log, $memoryLogger2->getLogs());
 	}
 
-	public function test_MultiLogger_withAdditionalLoggers() : void {
+	public function test_MultiLogger_withAdditionalLoggers(): void {
 		$memoryLogger1 = new MemoryLogger;
 		$memoryLogger2 = new MemoryLogger;
 		$logger        = new MultiLogger($memoryLogger1, $memoryLogger2);

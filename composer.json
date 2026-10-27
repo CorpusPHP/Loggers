@@ -14,15 +14,16 @@
         "php": "^7.4 || ^8.0"
     },
     "require-dev": {
-        "donatj/drop": "^1.1",
-        "phpunit/phpunit": "^9.6",
-        "donatj/mddoc": "=0.12.0",
-        "squizlabs/php_codesniffer": "^4.0",
         "corpus/coding-standard": "^0.10.0",
-        "friendsofphp/php-cs-fixer": "=3.95.27",
-        "rawr/phpunit-data-provider": "^3.3",
+        "corpus/php-cs-fixer-config": "^0.1.0",
         "corpus/recursive-require": "^1.2",
-        "phpstan/phpstan": "^2.2"
+        "donatj/drop": "^1.1",
+        "donatj/mddoc": "=0.14.1",
+        "friendsofphp/php-cs-fixer": "=3.95.27",
+        "phpstan/phpstan": "^2.2",
+        "phpunit/phpunit": "^9.6",
+        "rawr/phpunit-data-provider": "^3.3",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -44,6 +45,7 @@
         "psr/log-implementation": "1.0|2.0|3.0"
     },
     "config": {
+        "sort-packages": true,
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }

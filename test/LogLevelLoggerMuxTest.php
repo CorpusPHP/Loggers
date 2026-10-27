@@ -11,7 +11,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 	/**
 	 * @dataProvider levelTestProvider
 	 */
-	public function test_LogLevelLoggerMux_catchNone( array $levels ) : void {
+	public function test_LogLevelLoggerMux_catchNone( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux;
 		foreach( $levels as $level ) {
@@ -21,7 +21,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 		$this->assertSame([], $memoryLogger->getLogs());
 	}
 
-	public function test_LogLevelLoggerMux_catchAll() : void {
+	public function test_LogLevelLoggerMux_catchAll(): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux($memoryLogger);
 
@@ -39,7 +39,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 	/**
 	 * @dataProvider levelTestProvider
 	 */
-	public function test_LogLevelLoggerMux_catchSome( array $levels ) : void {
+	public function test_LogLevelLoggerMux_catchSome( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux($memoryLogger);
 
@@ -68,7 +68,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 	/**
 	 * @dataProvider levelTestProvider
 	 */
-	public function test_LogLevelLoggerMux_catchWith( array $levels ) : void {
+	public function test_LogLevelLoggerMux_catchWith( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux;
 
@@ -92,7 +92,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 	/**
 	 * @dataProvider levelTestProvider
 	 */
-	public function test_LogLevelLoggerMux_catchWith_includingDefault( array $levels ) : void {
+	public function test_LogLevelLoggerMux_catchWith_includingDefault( array $levels ): void {
 		$memoryLoggerHit  = new MemoryLogger;
 		$memoryLoggerMiss = new MemoryLogger;
 		$logger           = new LogLevelLoggerMux($memoryLoggerMiss);
@@ -119,24 +119,24 @@ class LogLevelLoggerMuxTest extends TestCase {
 		$this->assertSame($missLog, $memoryLoggerMiss->getLogs());
 	}
 
-	public function test_LogLevelLoggerMux_invalidLogLevel() : void {
+	public function test_LogLevelLoggerMux_invalidLogLevel(): void {
 		$catchAll   = new MemoryLogger;
 		$nullLogger = new NullLogger;
 		$logger     = new LogLevelLoggerMux(
-			$catchAll, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger
+			$catchAll, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger, $nullLogger,
 		);
 
 		$logger->log('invalid', 'test');
 		$this->assertSame([ MemoryLogger::makeLogRecord('invalid', 'test') ], $catchAll->getLogs());
 	}
 
-	public function levelTestProvider() : \Generator {
+	public static function levelTestProvider(): \Generator {
 		foreach( self::arrayPowerSet(LogLevels::ALL_LEVELS) as $combination ) {
 			yield [ $combination ];
 		}
 	}
 
-	private static function arrayPowerSet( array $array ) : array {
+	private static function arrayPowerSet( array $array ): array {
 		// initialize by adding the empty set
 		$results = [ [] ];
 

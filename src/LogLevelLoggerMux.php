@@ -60,7 +60,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Emergency log level.
 	 */
-	public function withEmergencyLogger( LoggerInterface $logger ) : self {
+	public function withEmergencyLogger( LoggerInterface $logger ): self {
 		$clone                  = clone $this;
 		$clone->emergencyLogger = $logger;
 
@@ -70,7 +70,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Alert log level.
 	 */
-	public function withAlertLogger( LoggerInterface $logger ) : self {
+	public function withAlertLogger( LoggerInterface $logger ): self {
 		$clone              = clone $this;
 		$clone->alertLogger = $logger;
 
@@ -80,7 +80,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Critical log level.
 	 */
-	public function withCriticalLogger( LoggerInterface $logger ) : self {
+	public function withCriticalLogger( LoggerInterface $logger ): self {
 		$clone                 = clone $this;
 		$clone->criticalLogger = $logger;
 
@@ -90,7 +90,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Error log level.
 	 */
-	public function withErrorLogger( LoggerInterface $logger ) : self {
+	public function withErrorLogger( LoggerInterface $logger ): self {
 		$clone              = clone $this;
 		$clone->errorLogger = $logger;
 
@@ -100,7 +100,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Warning log level.
 	 */
-	public function withWarningLogger( LoggerInterface $logger ) : self {
+	public function withWarningLogger( LoggerInterface $logger ): self {
 		$clone                = clone $this;
 		$clone->warningLogger = $logger;
 
@@ -110,7 +110,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Notice log level.
 	 */
-	public function withNoticeLogger( LoggerInterface $logger ) : self {
+	public function withNoticeLogger( LoggerInterface $logger ): self {
 		$clone               = clone $this;
 		$clone->noticeLogger = $logger;
 
@@ -120,7 +120,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Info log level.
 	 */
-	public function withInfoLogger( LoggerInterface $logger ) : self {
+	public function withInfoLogger( LoggerInterface $logger ): self {
 		$clone             = clone $this;
 		$clone->infoLogger = $logger;
 
@@ -130,7 +130,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	/**
 	 * Returns a new instance with the specified logger handling the Debug log level.
 	 */
-	public function withDebugLogger( LoggerInterface $logger ) : self {
+	public function withDebugLogger( LoggerInterface $logger ): self {
 		$clone              = clone $this;
 		$clone->debugLogger = $logger;
 
@@ -145,7 +145,7 @@ class LogLevelLoggerMux implements LoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		switch( true ) {
 			case $level === LogLevel::EMERGENCY:
 				$this->emergencyLogger->log($level, $message, $context);

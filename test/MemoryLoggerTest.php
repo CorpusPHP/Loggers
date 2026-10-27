@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class MemoryLoggerTest extends TestCase {
 
-	public function test_MemoryLogger() : void {
+	public function test_MemoryLogger(): void {
 		$logger = new MemoryLogger;
 
 		$i   = 0;

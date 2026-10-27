@@ -45,25 +45,25 @@ class LoggerWithContext implements LoggerWithContextInterface, WrappedLoggerInte
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ) : void {
+	public function log( $level, $message, array $context = [] ): void {
 		$this->logger->log($level, $message, array_replace($this->context, $context));
 	}
 
-	public function withContext( array $context ) : self {
+	public function withContext( array $context ): self {
 		$clone          = clone $this;
 		$clone->context = $context;
 
 		return $clone;
 	}
 
-	public function withAddedContext( array $context ) : self {
+	public function withAddedContext( array $context ): self {
 		$clone          = clone $this;
 		$clone->context = array_replace($clone->context, $context);
 
 		return $clone;
 	}
 
-	public function unwrap() : LoggerInterface {
+	public function unwrap(): LoggerInterface {
 		return $this->logger;
 	}
 

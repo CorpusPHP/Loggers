@@ -1,7 +1,7 @@
 <mddoc>
 	<docpage target="README.md">
 
-		<autoloader type="psr4" root="src" namespace="Corpus\Loggers"/>
+		<autoloader type="composer"/>
 
 		<section title="(PSR-3) Loggers and Logging Utilities">
 			<badge-poser type="version"/>

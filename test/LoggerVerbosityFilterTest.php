@@ -11,7 +11,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 	/**
 	 * @dataProvider standardVerbosityLevel_logLevelSetMode_provider
 	 */
-	public function test_LoggerVerbosityFilter( int $logLevel, array $loggedLevels, bool $levelMode ) : void {
+	public function test_LoggerVerbosityFilter( int $logLevel, array $loggedLevels, bool $levelMode ): void {
 		$memoryLogger = new MemoryLogger;
 		if( $levelMode ) {
 			$logger = new LoggerVerbosityFilter($memoryLogger, $logLevel);
@@ -31,10 +31,10 @@ class LoggerVerbosityFilterTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	public function standardVerbosityLevel_logLevelSetMode_provider() : iterable {
+	public static function standardVerbosityLevel_logLevelSetMode_provider(): iterable {
 		return DataProvider::cross(
 			$this->standardVerbosityLevelProvider(),
-			$this->binaryChoiceProvider()
+			$this->binaryChoiceProvider(),
 		);
 	}
 
@@ -44,7 +44,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 	public function test_LoggerVerbosityFilter_customLevelCallback(
 		callable $callback,
 		array $matchedCallbackLevelMap
-	) : void {
+	): void {
 		foreach( $matchedCallbackLevelMap as $logLevel => $matchedCallbackLevels ) {
 			$memoryLogger = new MemoryLogger;
 			$logger       = new LoggerVerbosityFilter($memoryLogger, $logLevel, $callback);
@@ -63,17 +63,17 @@ class LoggerVerbosityFilterTest extends TestCase {
 		}
 	}
 
-	public function customCallbackProvider() : array {
+	public static function customCallbackProvider(): array {
 		return [
 			[
-				function ( string $level ) : int { return 0; },
+				function ( string $level ): int { return 0; },
 				[
 					0 => [ LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR, LogLevel::WARNING, LogLevel::NOTICE, LogLevel::INFO, LogLevel::DEBUG ],
 					5 => [ LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR, LogLevel::WARNING, LogLevel::NOTICE, LogLevel::INFO, LogLevel::DEBUG ],
 				],
 			],
 			[
-				function ( string $level ) : int {
+				function ( string $level ): int {
 					switch( $level ) {
 						case LogLevel::EMERGENCY:
 							return 1;
@@ -110,7 +110,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 		];
 	}
 
-	public function standardVerbosityLevelProvider() : array {
+	public function standardVerbosityLevelProvider(): array {
 		return [
 			[ 0, [] ],
 			[ 1, [ LogLevel::EMERGENCY, LogLevel::ALERT, LogLevel::CRITICAL, LogLevel::ERROR ] ],
@@ -120,7 +120,7 @@ class LoggerVerbosityFilterTest extends TestCase {
 		];
 	}
 
-	public function binaryChoiceProvider() : array {
+	public function binaryChoiceProvider(): array {
 		return [ [ true ], [ false ] ];
 	}
 

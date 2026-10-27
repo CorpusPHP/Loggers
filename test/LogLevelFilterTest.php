@@ -7,12 +7,12 @@ use Psr\Log\LogLevel;
 
 class LogLevelFilterTest extends TestCase {
 
-	public function testExclude() : void {
+	public function testExclude(): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelFilter(
 			$memoryLogger,
 			[ LogLevel::INFO ],
-			true
+			true,
 		);
 
 		$logger->info('Hello World', [ 'foo' => 'bar' ]);
@@ -24,16 +24,16 @@ class LogLevelFilterTest extends TestCase {
 				[ 'level' => 'debug', 'message' => 'How are you?', 'context' => [ 'bar' => 'baz' ] ],
 				[ 'level' => 'error', 'message' => 'I am fine', 'context' => [ 'baz' => 'qux' ] ],
 			],
-			$memoryLogger->getLogs()
+			$memoryLogger->getLogs(),
 		);
 	}
 
-	public function testInclude() : void {
+	public function testInclude(): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelFilter(
 			$memoryLogger,
 			[ LogLevel::INFO ],
-			false
+			false,
 		);
 
 		$logger->info('Hello World', [ 'foo' => 'bar' ]);
@@ -44,7 +44,7 @@ class LogLevelFilterTest extends TestCase {
 			[
 				[ 'level' => 'info', 'message' => 'Hello World', 'context' => [ 'foo' => 'bar' ] ],
 			],
-			$memoryLogger->getLogs()
+			$memoryLogger->getLogs(),
 		);
 	}
 

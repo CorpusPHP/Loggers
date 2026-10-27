@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class LoggerUnwrapTest extends TestCase {
 
-	public function test_unwrap() : void {
+	public function test_unwrap(): void {
 		$loggerMemory = new MemoryLogger;
 
 		$loggerWithContextInner = new LoggerWithContext(
