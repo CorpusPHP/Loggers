@@ -26,20 +26,15 @@ class LogLevelFilter implements LoggerInterface, WrappedLoggerInterface {
 	use LoggerTrait;
 	use UnwrapTrait;
 
-	private readonly LoggerInterface $logger;
-	/** @var string[] */
-	private readonly array $levels;
-	private readonly bool $exclude;
-
 	/**
 	 * @param string[] $levels  The log levels to filter.
 	 * @param bool     $exclude Whether to exclude the given levels, or include them.
 	 */
-	public function __construct( LoggerInterface $logger, array $levels, bool $exclude = false ) {
-		$this->logger  = $logger;
-		$this->levels  = $levels;
-		$this->exclude = $exclude;
-	}
+	public function __construct(
+		private readonly LoggerInterface $logger,
+		private readonly array $levels,
+		private readonly bool $exclude = false,
+	) {}
 
 	/**
 	 * @inheritDoc See LoggerInterface::log()
