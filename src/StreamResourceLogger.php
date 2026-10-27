@@ -16,15 +16,14 @@ class StreamResourceLogger implements LoggerInterface {
 
 	use LoggerTrait;
 
-	/** @var resource */
-	private $stream;
-
 	/**
 	 * @param resource $resource Writable stream resource
 	 * @throws LoggerArgumentException If the given resource is not a stream
 	 * @throws LoggerInitException If the given resource is not writable
 	 */
-	public function __construct( $resource ) {
+	public function __construct(
+		private readonly mixed $resource,
+	) {
 		if( !is_resource($resource)
 			|| !(get_resource_type($resource) === 'stream')
 		) {
@@ -37,7 +36,6 @@ class StreamResourceLogger implements LoggerInterface {
 			throw new LoggerInitException('Resource is not writable');
 		}
 
-		$this->stream = $resource;
 	}
 
 	/**
@@ -48,9 +46,9 @@ class StreamResourceLogger implements LoggerInterface {
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		fprintf(
-			$this->stream,
+			$this->resource,
 			"%s %9s: %s\n",
 			date('c'),
 			(is_string($level) || (is_object($level) && method_exists($level, '__toString'))) ? (string)$level : var_export($level, true),
@@ -70,7 +68,7 @@ class StreamResourceLogger implements LoggerInterface {
 				$out .= $line . "\n";
 			}
 
-			fprintf($this->stream, "%{$max}s: %s", $key, $out);
+			fprintf($this->resource, "%{$max}s: %s", $key, $out);
 		}
 	}
 

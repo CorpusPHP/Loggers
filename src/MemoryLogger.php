@@ -29,7 +29,7 @@ class MemoryLogger implements LoggerInterface {
 	 * @param mixed[]            $context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		$this->logs[] = self::makeLogRecord($level, $message, $context);
 	}
 
@@ -67,7 +67,7 @@ class MemoryLogger implements LoggerInterface {
 	 * @return array{level:mixed,message:string|\Stringable,context:mixed[]}
 	 * @mddoc-ignore
 	 */
-	public static function makeLogRecord( $level, $message, array $context = [] ): array {
+	public static function makeLogRecord( mixed $level, mixed $message, array $context = [] ): array {
 		return [
 			self::KEY_LEVEL   => $level,
 			self::KEY_MESSAGE => $message,

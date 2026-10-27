@@ -18,7 +18,7 @@ PSR-3 logger utilities for filtering by level, combining loggers, adding context
 ## Requirements
 
 - **psr/log**: ^1 || ^2 || ^3
-- **php**: ^7.4 || ^8.0
+- **php**: ^8.1
 
 ## Installing
 

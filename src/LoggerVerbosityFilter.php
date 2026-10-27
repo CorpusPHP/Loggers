@@ -28,8 +28,6 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 	use LoggerTrait;
 	use UnwrapTrait;
 
-	private LoggerInterface $logger;
-	private int $verbosity;
 	/** @var callable */
 	private $verbosityFromLevelCallback;
 
@@ -38,12 +36,10 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 	 *                                                  returns an integer verbosity level. If null, the default callback will be used.
 	 */
 	public function __construct(
-		LoggerInterface $logger,
-		int $verbosity = 0,
-		?callable $verbosityFromLevelCallback = null
+		private readonly LoggerInterface $logger,
+		private int $verbosity = 0,
+		?callable $verbosityFromLevelCallback = null,
 	) {
-		$this->logger                     = $logger;
-		$this->verbosity                  = $verbosity;
 		$this->verbosityFromLevelCallback = $verbosityFromLevelCallback
 			?? fn ( string $level ): int => $this->getVerbosityFromLevel($level);
 	}
@@ -76,7 +72,7 @@ class LoggerVerbosityFilter implements LoggerInterface, WrappedLoggerInterface {
 	 * @param mixed[]            $context The log context
 	 * @mddoc-ignore
 	 */
-	public function log( $level, $message, array $context = [] ): void {
+	public function log( mixed $level, mixed $message, array $context = [] ): void {
 		if( $this->verbosity >= ($this->verbosityFromLevelCallback)($level) ) {
 
 			$this->logger->log($level, $message, $context);

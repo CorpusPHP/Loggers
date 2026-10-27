@@ -8,9 +8,7 @@ use Psr\Log\NullLogger;
 
 class LogLevelLoggerMuxTest extends TestCase {
 
-	/**
-	 * @dataProvider levelTestProvider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('levelTestProvider')]
 	public function test_LogLevelLoggerMux_catchNone( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux;
@@ -36,9 +34,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	/**
-	 * @dataProvider levelTestProvider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('levelTestProvider')]
 	public function test_LogLevelLoggerMux_catchSome( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux($memoryLogger);
@@ -65,9 +61,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 		LogLevel::DEBUG     => 'withDebugLogger',
 	];
 
-	/**
-	 * @dataProvider levelTestProvider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('levelTestProvider')]
 	public function test_LogLevelLoggerMux_catchWith( array $levels ): void {
 		$memoryLogger = new MemoryLogger;
 		$logger       = new LogLevelLoggerMux;
@@ -89,9 +83,7 @@ class LogLevelLoggerMuxTest extends TestCase {
 		$this->assertSame($log, $memoryLogger->getLogs());
 	}
 
-	/**
-	 * @dataProvider levelTestProvider
-	 */
+	#[\PHPUnit\Framework\Attributes\DataProvider('levelTestProvider')]
 	public function test_LogLevelLoggerMux_catchWith_includingDefault( array $levels ): void {
 		$memoryLoggerHit  = new MemoryLogger;
 		$memoryLoggerMiss = new MemoryLogger;
