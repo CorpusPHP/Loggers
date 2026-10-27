@@ -5,7 +5,7 @@
 [![ci.yml](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml/badge.svg)](https://github.com/CorpusPHP/Loggers/actions/workflows/ci.yml)
 
 
-Utilities for and Loggers for [PSR-3: Logger Interface](https://www.php-fig.org/psr/psr-3/).
+PSR-3 logger utilities for filtering by level, combining loggers, adding context, and writing to streams.
 
 - **LogLevelFilter** - LogLevelFilter is a PSR Logger that filters logs based on the log level. It can be used to filter out log messages that are not needed for a specific use case.  
 - **LogLevelLoggerMux** - LogLevelLoggerMux is a PSR Logger that multiplexes logs to different loggers based on the log level.  
