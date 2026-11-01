@@ -16,7 +16,7 @@
         "memory logging"
     ],
     "require": {
-        "psr/log": "^1 || ^2 || ^3",
+        "psr/log": "^3.0.2",
         "php": "^8.1"
     },
     "require-dev": {
